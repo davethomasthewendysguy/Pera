@@ -1,0 +1,270 @@
+/* 960 and up */ 
+#header-container {
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 1000;
+}
+
+body.admin-bar #header-container {
+	top: 34px;
+}
+
+.container {
+	position: relative;
+	margin: 0 auto;
+	padding: 0;
+	width: 100%; /*width:  960px;*/
+}
+
+#logo-overlay {
+	position: absolute;
+  	top: 50%;
+  	left: 50%;
+  	margin-top: -100px;
+  	margin-left: -200px;
+}
+
+#content-overlay {
+	position: absolute;
+	margin: 0 auto 0 auto;
+    padding: 80px 60px 0 60px;
+    width: 100%;
+    height: 100%;
+    color: #ffffff;
+	background: #000000;
+	opacity: .8;
+	overflow: auto;
+	clear: both;
+	z-index: 100;
+}
+
+#below-fold {
+	position: absolute;
+	margin: 0 auto 0 auto;
+    width: 100%;
+    min-height: 300px;
+    top: 100%;
+    color: #ffffff;
+	background: #000000;
+	opacity: .8;
+	overflow: auto;
+	clear: both;
+}
+
+#below-fold2 {
+	position: absolute;
+	margin: 0 auto 0 auto;
+    width: 100%;
+    top: 100%;
+    color: #ffffff;
+	background: #000000;
+	opacity: .8;
+	overflow: auto;
+	clear: both;
+}
+
+#restaurant-menu {
+	position: relative;
+	padding: 30px 0 0 0;
+	width: 100%;
+	min-height: 300px;
+	/*overflow: auto;*/
+}
+
+#restaurant-menu p {
+	font-family: corbel, helvetica, arial, sans-serif;
+	font-size: 18px;
+}
+
+#restaurant-menu ul.meal-selector {
+	margin: 0 0 0 30px;
+}
+
+#restaurant-menu ul.meal-selector li {
+	display: inline-block;
+	margin-left: 0;
+	padding: 0 20px 0 0;
+	color: #ffffff;
+	font-family: century gothic, helvetica, arial, sans-serif;
+	font-size: 30px;
+	list-style-type: none;
+	text-transform: uppercase;
+}
+
+#restaurant-menu ul.meal-selector li a:link, #restaurant-menu ul.meal-selector li a:visited {
+	color: #ffffff;
+	text-decoration: none;
+}
+
+#restaurant-menu ul.meal-selector li a:hover, #restaurant-menu ul.meal-selector li a:active {
+	color: #3568A9;
+	text-decoration: none;
+}
+
+#restaurant-menu nav {
+	float: left;
+	display: block;
+	position: absolute;
+	left: 0;
+	margin-left: 30px;
+	transition: all 1s ease-in-out;
+}
+
+#restaurant-menu nav.hidden {
+	display: none;
+}
+
+#restaurant-menu nav.visuallyhidden {
+	opacity: 0;
+}
+
+#restaurant-menu nav h3 {
+	color: #ffffff;
+	font-family: corbel, helvetica, arial, sans-serif;
+}
+
+#restaurant-menu nav ul {
+	width: 100%;
+  	margin-bottom: 20px;
+  	padding: 20px 0 0 0;
+  	border-top: 1px solid #ccc;
+  	overflow: hidden;
+}
+
+#restaurant-menu nav ul li {
+	float: left;
+  	display: inline;
+  	padding-right: 20px;
+	color: #ffffff;
+	font-family: corbel, helvetica, arial, sans-serif;
+	font-size: 18px;
+	font-weight: normal;
+	list-style-type: none;
+	line-height: 1.5em;
+}
+
+/* HEADER MENU */ 
+
+.menu-header {
+	float: right;
+	margin: 0;
+	min-width: 320px;
+	width: 100%;
+	max-width: 600px;
+
+	@include between($desktop, $tablet-portrait) {
+		float: right;
+		max-width: 400px;
+	}
+	
+	@include between($tablet-portrait, $phone-landscape) {
+		float: right;
+		min-width: 0;
+		width: auto;
+		max-width: 200px;
+	}
+	
+	@include between($phone-landscape, $phone-portrait) {
+		float: right;
+		min-width: 0;
+		width: auto;
+		max-width: none;
+	}
+}
+
+.menu-top-menu
+/* */
+
+#double li {
+	width:50%;
+}
+
+#triple li {
+	width:33.333%;
+}
+
+#quad li {
+	width:25%;
+}
+#six li {
+	width:16.666%;
+}
+
+.container:after {
+    content: "\0020";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+.clearfix:before, .clearfix:after, .row:before, .row:after {
+    content: "\0020";
+    display: block;
+    overflow: hidden;
+    visibility: hidden;
+    width: 0;
+    height: 0;
+}
+
+.row:after, .clearfix:after {
+    clear: both;
+}
+
+.row, .clearfix {
+    zoom: 1;
+}
+
+.clear {
+    clear: both;
+    display: block;
+    overflow: hidden;
+    visibility: hidden;
+    width: 0;
+    height: 0;
+}
+
+.one_half {
+    width: 48%}
+
+.one_third {
+    width: 30.66%}
+
+.two_thirds {
+    width: 65.33%}
+
+.one_fourth {
+    width: 22%}
+
+.three_fourths {
+    width: 74%}
+
+.one_fifth {
+    width: 16.8%}
+
+.two_fifth {
+    width: 37.6%}
+
+.three_fifth {
+    width: 58.4%}
+
+.four_fifth {
+    width: 79.2%}
+
+.one_sixth {
+    width: 13.33%}
+
+.five_sixth {
+    width: 82.67%}
+
+.one_half, .one_third, .two_thirds, .three_fourths, .one_fourth, .one_fifth, .two_fifth, .three_fifth, .four_fifth, .one_sixth, .five_sixth {
+    position: relative;
+    margin-right: 4%;
+    margin-bottom: 20px;
+    float: left;
+}
+
+.last {
+    margin-right: 0 !important;
+}

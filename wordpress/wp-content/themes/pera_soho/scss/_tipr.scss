@@ -1,0 +1,104 @@
+
+/*
+Tipr 1.0.1
+Copyright (c) 2013 Tipue
+Tipr is released under the MIT License
+http://www.tipue.com/tipr
+*/
+
+.tipr_content {
+	position: relative;
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+	color: #333;
+	border-radius: 3px;
+	background-color: rgb(229,229,229);
+	@include filter-gradient(#e5e5e5, #ffffff, vertical);
+	$experimental-support-for-svg: true;
+	@include background-image(linear-gradient(top, rgba(229,229,229,1) 0%,rgba(255,255,255,1) 100%));
+	color: #333;
+	padding: 9px 7px;
+}
+
+.tipr_container_bottom {
+	display: none;
+	position: absolute;
+	margin-top: 0px;
+	z-index: 1000;
+}
+
+.tipr_container_top {
+    display: none;
+    position: absolute;
+    margin-top: -83px;
+    z-index: 1000;
+}
+
+.tipr_point_top, .tipr_point_bottom {
+	position: relative;
+	background: #fff;
+	border: 1px solid #a1a1a1;
+}
+
+.tipr_point_top:after, .tipr_point_top:before {
+	position: absolute;
+	pointer-events: none;
+	border: solid transparent;
+	top: 100%;
+	content: "";
+	height: 0;
+	width: 0;
+}
+
+/*.tipr_point_top:after {
+	border-top-color: transparent;
+	border-width: 5px;
+	left: 10%;
+	margin-left: 5px;
+}
+
+.tipr_point_top:before {
+	border-top-color: transparent;
+	border-width: 5px;
+	left: 10%;
+	margin-left: 5px;
+}
+
+.tipr_point_bottom:after, .tipr_point_bottom:before {
+	position: absolute;
+	pointer-events: none;
+	border: solid transparent;
+	bottom: 100%;
+	content: "";
+	height: 0;
+	width: 0;
+}
+
+.tipr_point_bottom:after {
+	border-bottom-color: #fff;
+	border-width: 8px;
+	left: 20%;
+	margin-left: 8px;
+}
+
+.tipr_point_bottom:before  {
+	border-bottom-color: #333333;
+	border-width: 9px;
+	left: 20%;
+	margin-left: 9px;
+}*/
+
+.tipr_arrow_top {
+	position: relative;
+	width: 8px;
+	height: 8px;
+	top: -4px;
+	left: 15%;
+	border-right: 1px solid #a1a1a1;
+	border-bottom: 1px solid #a1a1a1;
+	background: #ffffff;
+	-ms-transform: rotate(45deg); /* IE 9 */
+    -webkit-transform: rotate(45deg); /* Chrome, Safari, Opera */
+    transform: rotate(45deg);
+}

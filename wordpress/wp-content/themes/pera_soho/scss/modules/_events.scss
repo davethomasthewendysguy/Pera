@@ -1,0 +1,15 @@
+.page-template-events-php {
+	article {
+		img.featured-image {
+			@include smaller-than($tablet-portrait) {
+				width: 100%;
+			}
+		}
+	}
+	
+	#booking {
+		h3 {
+			letter-spacing: 2px;
+		}
+	}
+}

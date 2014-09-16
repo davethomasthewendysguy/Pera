@@ -1,0 +1,9 @@
+# BEGIN WordPress
+
+# END WordPress
+
+
+Options -Indexes
+Options +FollowSymLinks
+
+#DirectoryIndex index.php

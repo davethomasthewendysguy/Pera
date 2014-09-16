@@ -1,0 +1,138 @@
+@charset "utf-8";
+/* CSS Document */
+*{
+   /*margin:0;
+   padding:0;*/
+   font-family:Arial, Helvetica, sans-serif;
+}
+body{
+   background:#F7F6F1;  
+}
+.plugin_admin_renamer-wrapper{
+   width:94%;
+   height:auto;
+   float:left;
+   overflow:none;
+   padding-top:15px;
+}
+.plugin_admin_renamer-head{
+   width:100%;
+   height:49px;
+   float:left;
+   background:url(../images/rounded_repeat.jpg) repeat-x #e4f2fd;
+}
+.plugin_admin_renamer-head-left{
+   width:6px;
+   height:49px;
+   float:left;
+   background:url(../images/rounded_left.jpg) no-repeat;
+   padding-right:15px;
+}
+.plugin_admin_renamer-head-mid{
+   width:auto;
+   float:left;
+   font-family:Georgia, "Times New Roman", Times, serif;
+   font-size:24px;
+   color:#555555;
+   line-height:49px;
+}
+.plugin_admin_renamer-head-right{
+   width:6px;
+   height:49px;
+   float:right;
+   background:url(../images/rounded_right.jpg) no-repeat;
+}
+.plugin_admin_renamer-save{
+   width:100%;
+   height:25px;
+   float:left;
+   background:#FFF193;
+   margin:5px 0;
+}
+.plugin_admin_renamer-save-message{
+   width:auto;
+   height:25px;
+   line-height:25px;
+   padding:0 150px 0 21px;
+   font-size:14px;
+   color:#C00;
+   font-style:italic;
+   float:left;
+}
+.plugin_admin_renamer-formarea-outer{
+   width:100%;
+   height:auto;
+   float:left;
+   padding:15px 0 30px 21px;
+}
+.plugin_admin_renamer-formarea{
+   width:490px;
+   height:auto;
+   float:left;
+   overflow:none;
+   border:solid 1px #ccc;
+   padding:0 0 10px 10px;
+}
+.plugin_admin_renamer-ip-box{
+ width:310px;
+ padding:5px;
+ font-size:12px;
+ font-family:Arial, Helvetica, sans-serif;
+ color:#666;
+ background:#f5f5f5;
+border:solid 1px #cecece;
+line-height:15px;
+}
+
+.plugin_admin_renamer-save-btn{
+   margin:1px 0 0 0;
+   padding:0;
+}
+.plugin_admin_renamer-box01{
+   width:auto;
+   height:auto;
+   float:left;
+   padding-right:15px;
+}
+.plugin_admin_renamer-black17{
+   font-size:17px;
+   color:#333333;
+   padding:0 0 10px 21px;
+   margin:0;
+}
+.plugin_admin_renamer-table-container{
+   width:95%;
+   height:auto;
+   float:lef;
+   padding-left:21px;
+}
+.plugin_admin_renamer-raw-main{
+   height:40px;
+   line-height:40px;
+   background:#333333;
+   padding-left:15px;
+   font-size:14px;
+   color:#FFF;
+}
+.plugin_admin_renamer-raw01 td{
+   height:30px;
+   line-height:30px;
+   background:#ffffff;
+   padding-left:15px;
+   font-size:12px;
+   color:#333;
+}
+.plugin_admin_renamer-raw01 td img{
+   margin:4px 20px 0 0;
+}
+.plugin_admin_renamer-raw02 td{
+   height:30px;
+   line-height:30px;
+   background:#efefef;
+   padding-left:15px;
+   font-size:12px;
+   color:#333;
+}
+.plugin_admin_renamer-raw02 td img{
+   margin:4px 20px 0 0;
+}

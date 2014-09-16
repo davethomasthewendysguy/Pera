@@ -1,0 +1,57 @@
+.sharing-container {	
+	position: relative;
+	margin-left: 50%;
+	left: -48px; /* WAS left: -65px; */
+	height:	100px;
+}
+
+.hupso-share-buttons div div {
+	display: block !important;
+	text-align: center;
+}
+
+.hupso-share-buttons, .likebtn_container {
+	float: left;
+}
+
+.hupso-share-buttons {
+	width: 97px;
+}
+
+.sharing-container .likebtn-wrapper.lb-style-squarespace {
+	line-height: 28px;
+}
+
+.sharing-container .lb-style-squarespace .lb-like-icon {
+	background-image: url("images/like-button.png");
+}
+
+.sharing-container .lb-style-squarespace .lb-like-icon:hover, .sharing-container .lb-style-squarespace .lb-like-icon:active, .sharing-container .lb-style-squarespace .lb-a:hover .lb-like-icon {
+	background-image: url("images/like-button-hover.png");
+}
+
+.sharing-container .lb-style-squarespace .lb-voted .lb-like-icon {
+	background-image: url("images/like-button-red.png");
+}
+
+.sharing-container .lb-style-squarespace .lb-voted .lb-a:hover .lb-like-icon {
+	background-image: url("images/like-button-hover-red.png");
+}
+
+.sharing-container .lb-style-squarespace .lb-like-icon, .sharing-container .lb-style-squarespace .lb-dislike-icon {
+	/*padding: 5px 5px 0 0*/;
+	height: 28px;
+	width: 28px;
+}
+
+.sharing-container .lb-like, .sharing-container .lb-dislike {
+	width: 28px;
+	height: 28px;
+	margin-right: 3px;
+	overflow: visible;
+	padding: 0;
+}
+
+.sharing-container .hupso-share-buttons, .sharing-container .likebtn_container {
+	padding-top: 11px;
+}
