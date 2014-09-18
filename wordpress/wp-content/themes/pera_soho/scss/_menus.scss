@@ -92,10 +92,21 @@ nav.main-navigation {
 		text-align: center;
 	}
 	
+	.menu-top-menu-container {
+		ul {
+			position: relative;
+			left: -8px; /* HACK TO CENTER MENU PROPERLY */
+			
+			@include between($desktop, $tablet-portrait) {
+				left: -1px; /* HACK TO CENTER MENU PROPERLY */
+			}
+		}
+	}
+	
 	li {
 		float: none;
 		display: inline;
-		padding: 0 20px 0 20px;
+		padding: 0 18px 0 18px;
 		font-family: $avenir;
 		font-weight: 700;
 		text-transform: uppercase;
@@ -116,7 +127,7 @@ nav.main-navigation {
 			color: $black;
 			
 			@include between($desktop, $tablet-portrait) {
-				padding-top: 22px;
+				padding-top: 35px;
 			}
 		}
 		
@@ -125,7 +136,7 @@ nav.main-navigation {
 			color: $gray;
 			
 			@include between($desktop, $tablet-portrait) {
-				padding-top: 22px;
+				padding-top: 35px;
 			}
 		}
 	}

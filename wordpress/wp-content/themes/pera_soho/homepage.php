@@ -23,14 +23,11 @@ get_header(); ?>
 	</nav>
 </div>
 
-<div class="modal-hide center absolute">
-    <script type="text/javascript" src="https://secure.opentable.com/frontdoor/default.aspx?rid=100249&restref=100249&bgcolor=F6F6F3&titlecolor=cba978&subtitlecolor=0F0F0F&btnbgimage=https://secure.opentable.com/frontdoor/img/ot_btn_red.png&otlink=FFFFFF&icon=dark&mode=short"></script>
-</div>
 
 <div id="below-fold">
 	<div class="full-module white-background"><!--LOCATION AND HOURS-->
 		<div class="full-module-inside">
-			<a href="http://www.opentable.com/bistro-72-at-hotel-indigo-east-end-reservations-riverhead?rtype=ism&restref=100249"><img width="230" height="37" class="modal-pop-up center margin-medium" src="<?php echo $bloginfo ;?>make-a-reservation.png" alt="Make a Reservation" /></a>
+			<a class="open-reservation-box" href="#"><img width="230" height="37" class="modal-pop-up center margin-medium" src="<?php echo $bloginfo ;?>make-a-reservation.png" alt="Make a Reservation" /></a>
 			
 			<h3 class="uppercase center">Location & Hours</h3>
 			
@@ -38,9 +35,9 @@ get_header(); ?>
 				<img src="<?php echo $bloginfo ;?>filigre-top.png" alt="Filigre border" />
 				
 				<div class="column1">
-					<p><a href="https://www.google.com/maps/place/Pera+Soho/@40.723831,-74.003389,17z/data=!3m1!4b1!4m2!3m1!1s0x89c2598c80b90e3d:0x8c053fe36e7d8561">54 Thompson Street<br />
-					New York, NY 10012<br />
-					at the corner of Broome Street</a></p>
+					<p><a target="_blank" href="https://www.google.com/maps/place/Pera+Soho/@40.723831,-74.003389,17z/data=!3m1!4b1!4m2!3m1!1s0x89c2598c80b90e3d:0x8c053fe36e7d8561">54 Thompson Street (and Broome)<br />
+					New York, NY 10012</a><br />
+					Ph. <a href="tel:+1-212-878-6305">212.878.6305</a></p>
 				</div>
 				<div class="column2">
 					<p>Sunday - Thursday<br />
@@ -72,36 +69,39 @@ get_header(); ?>
 		</div>
 	</div>
 	
-	<div class="full-module fixed-background roof-background optimize-sharpness" data-type="background" data-speed="20"><!--PARALLAX STAR-->
+	<div class="full-module fixed-background roof-background optimize-sharpness" data-type="background" data-speed="40"><!--PARALLAX STAR-->
 		<img class="full-width" src="<?php echo $bloginfo ;?>star-pattern.png" alt="Star Pattern" />
 	</div>
 	
 	<div id="specials" class="full-module white-background"><!--SPECIALS-->
 		<div class="specials-module-inside">
-			<h3 class="uppercase center">Specials</h3>
+			<h3 class="uppercase center">Pera-Logue</h3>
 			
-			<?php the_post();
-
-			//Get 'Special' posts
-			$special_posts = get_posts(array(
-				'post_type' => 'specials',
-				'posts_per_page' => -1, // Unlimited posts
-				'orderby' => 'date', // Order by date
-			)); ?>
+			<?php the_post(); ?>
 			
 			<div class="homepage-specials">
-				<?php if ( $special_posts ): 
-					foreach ( $special_posts as $post ): 
+				<?php
+					//Get 'Special' posts
+					$news_posts = get_posts(array(
+						'post_type' => 'post',
+						'posts_per_page' => 1, // Unlimited posts
+						'orderby' => 'date', // Order by date
+						'category' => -4
+					)); 
+				?>
+				
+				<?php if($news_posts): 
+					foreach ($news_posts as $post): 
 						setup_postdata($post);
 
 						// Resize and CDNize thumbnails using Automattic Photon service
 						$thumb_src = null;
-						if ( has_post_thumbnail($post->ID) ) {
-							$src = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'team-thumb' );
+						if (has_post_thumbnail($post->ID)) {
+							$src = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'team-thumb' );
 							$thumb_src = $src[0];
 						}
 						?>
-					
+						
 						<article class="four-column">
 							<?php if ( $thumb_src ): ?>
 								<a href="<?php echo get_permalink(); ?>"><img width="140" height="140" src="<?php echo $thumb_src; ?>" alt="<?php the_title(); ?>"></a>
@@ -109,7 +109,44 @@ get_header(); ?>
 					
 							<h5 class="center uppercase"><?php the_title(); ?></h5>
 					
-							<?php the_content(); ?>						
+							<?php the_excerpt(); ?>						
+						</article><!-- /.profile -->
+
+					<?php endforeach; ?>
+				<?php endif; ?>
+				
+				<?php wp_reset_query(); ?>
+				
+				<?php
+					//Get 'featured' posts
+					$news_posts = get_posts(array(
+						'post_type' => 'post',
+						'posts_per_page' => 3, // Unlimited posts
+						'orderby' => 'date', // Order by date
+						'category' => 4
+					)); 
+				?>
+				
+				<?php if($news_posts): 
+					foreach ($news_posts as $post): 
+						setup_postdata($post);
+
+						// Resize and CDNize thumbnails using Automattic Photon service
+						$thumb_src = null;
+						if (has_post_thumbnail($post->ID)) {
+							$src = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'team-thumb' );
+							$thumb_src = $src[0];
+						}
+						?>
+						
+						<article class="four-column">
+							<?php if ( $thumb_src ): ?>
+								<a href="<?php echo get_permalink(); ?>"><img width="140" height="140" src="<?php echo $thumb_src; ?>" alt="<?php the_title(); ?>"></a>
+							<?php endif; ?>
+					
+							<h5 class="center uppercase"><?php the_title(); ?></h5>
+					
+							<?php the_excerpt(); ?>						
 						</article><!-- /.profile -->
 
 					<?php endforeach; ?>
@@ -138,7 +175,7 @@ get_header(); ?>
 		</div>
 	</div>
 	
-	<div class="full-module fixed-background raw-ingredients-background optimize-sharpness" data-type="background" data-speed="20"><!--PARALLAX SMALL STAR-->
+	<div class="full-module fixed-background raw-ingredients-background optimize-sharpness" data-type="background" data-speed="40"><!--PARALLAX SMALL STAR-->
 		<img class="full-width" src="<?php echo $bloginfo ;?>small-star-pattern.png" alt="Star Pattern" />
 	</div>
 	
@@ -158,7 +195,7 @@ get_header(); ?>
 		</div>
 	</div>
 	
-	<div class="full-module fixed-background train-wallpaper-background optimize-sharpness" data-type="background" data-speed="20"><!--PARALLAX TRAIN-->
+	<div class="full-module fixed-background train-wallpaper-background optimize-sharpness" data-type="background" data-speed="40"><!--PARALLAX TRAIN-->
 		<img class="full-width" src="<?php echo $bloginfo ;?>logo-alt-pattern.png" alt="Train Wall" />
 	</div>
 	

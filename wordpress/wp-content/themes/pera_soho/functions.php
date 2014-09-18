@@ -312,3 +312,14 @@ function myplugin_save_meta_box_data( $post_id ) {
 	update_post_meta( $post_id, 'rev_slider_id', $my_data );
 }
 add_action( 'save_post', 'myplugin_save_meta_box_data' );
+
+
+
+
+/**
+ * Limit excerpts to 30 words
+ */
+function custom_excerpt_length($length) {
+	return 30;
+}
+add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );

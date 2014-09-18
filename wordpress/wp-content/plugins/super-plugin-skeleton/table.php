@@ -77,9 +77,11 @@ if(isset($_GET["move"]) && isset($_GET["switch_number"]) && isset($_GET["current
 }
 
 //FUNKY FUNCTIONS
-function save_menu_item($id, $menu_order, $menu_item = "",$meal = "", $description = "", $menu_item_type = "") {
+function save_menu_item($id, $menu_order, $menu_item = "", $meal = "", $description = "", $menu_item_type = "") {
 	if($id == "" || $id == NULL) {
-	
+		
+		echo "Menu item: ".$menu_item;
+		
 		//TODO SET CHECK FOR NULL VALUES
 		$query = "SELECT MAX(menu_order) FROM restaurant_menu WHERE meal = {$meal}";
 		$result = mysql_query($query) or die("<div class='error'>Error 6: ".mysql_error()."</div>");
@@ -134,7 +136,7 @@ function get_menu_item($id, $menu_item, $meal, $menu_order, $description = "") {
 		<td><input type="text" name="description" value="<?php echo $description; ?>" /></td>
 		<td>
 			<input type="text" name="meal" value="<?php echo $meal; ?>" /><br />
-			0 = Brunch / 1 = Lunch / 2 = Dinner / 3 = Dessert / 4 = Rooftop / 5 = Happy Hour
+			0 = Brunch / 1 = Lunch / 2 = Dinner / 3 = Dessert / 4 = Skydeck / 5 = Happy Hour
 		</td>
 		<td>
 			<input name="menu_item_type" value="<?php echo $menu_item_type; ?>" />
@@ -191,7 +193,8 @@ function get_menu($meal_option) {
 	
 	$query = "SELECT * FROM restaurant_menu WHERE meal = '".$meal_option."' ORDER BY meal ASC, menu_order ASC";
 	$result = mysql_query($query) or die();
-	$row_count = mysql_num_rows($result) - 1;
+	$row_count = mysql_num_rows($result);
+	
 	
 	if($row_count > 0) {
 		while ($row = mysql_fetch_assoc($result)) { ?>
@@ -250,15 +253,20 @@ function get_menu($meal_option) {
 				</td>
 			</tr>
 		<?php }
-	} else { ?>
-		<tr>
-			<td><input type="checkbox" /></td>
-			<td></td>
-			<td>No entries found</td>
-			<td></td>
-			<td></td>
-		</tr>
-	<?php }
+	} else {
+		if($empty_menu_count == 0) { ?>
+			<tr>
+				<td></td>
+				<td></td>
+				<td>No entries found</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+		<?php $empty_menu_count = 1;
+		}
+	}
 }
 ?>
 
@@ -314,15 +322,22 @@ function get_menu($meal_option) {
         <th class="manage-column">Menu Order</th>
     </tr>
     </thead>
-    <tbody  id="the-comment-list">
+    <tbody id="the-comment-list">
  		<?php if($action == add) {
 			add_menu_item();
 		} else if($action == edit) {
 			get_menu_item($id, $menu_item, $meal, $menu_item_type, $menu_order, $description, $menu_item_type);
-		} else {	
+		} else {
+			if($empty_menu_count == NULL) {
+				$empty_menu_count = 0;
+			}
+		
 			get_menu(0);
   			get_menu(1);
 	    	get_menu(2);
+	    	get_menu(3);
+	    	get_menu(4);
+	    	get_menu(5);
 		} ?>
     </tbody>
 </table>

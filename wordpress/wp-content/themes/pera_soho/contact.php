@@ -26,10 +26,10 @@
 				<br />
 				<a href="https://www.google.com/maps/place/54+Thompson+St/@40.7239637,-74.0036697,19z/data=!4m2!3m1!1s0x89c2598c7d22693d:0x5089669e6943b531">Map It!</a><br />
 				<br />
-				212.878.6305</p>
+				<span style="font-size:16px;">212.878.6305</span></p>
 			</div>
 			<div class="equal-columns margin-large-top margin-medium-bottom">
-				<h4 class="center uppercase">OUR MIDTOWN LOCATION</h4>
+				<h4 class="center uppercase">OUR MIDTOWN SISTER</h4>
 
 				<p class="center small-font"><a href="http://www.peranyc.com">Pera Mediterranean Brasserie<br />
 				303 Madison Ave<br />
@@ -40,5 +40,9 @@
 			
 			<img src="<?php echo $bloginfo ;?>filigre-bottom.png" alt="Filigre border" />
 		</div>
+		
+		<a class="open-reservation-box" href="#"><img width="230" height="37" class="modal-pop-up center margin-medium" src="<?php echo $bloginfo ;?>make-a-reservation.png" alt="Make a Reservation" /></a>
+		
+		<img src="<?php echo $bloginfo ;?>badges/opentable-amex.png" class="modal-pop-up center margin-medium" alt="Open Table and AMEX widget" />
 	</div>
 </div>

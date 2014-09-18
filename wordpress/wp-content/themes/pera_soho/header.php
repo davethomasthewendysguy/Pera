@@ -36,7 +36,7 @@
 				start_slide             :   1,			// Start slide (0 is random)
 				stop_loop				:	0,			// Pauses slideshow on last slide
 				random					: 	0,			// Randomize slide order (Ignores start slide)
-				slide_interval          :   8000,		// Length between transitions
+				slide_interval          :   5000,		// Length between transitions
 				transition              :   1, 			// 0-None, 1-Fade, 2-Slide Top, 3-Slide Right, 4-Slide Bottom, 5-Slide Left, 6-Carousel Right, 7-Carousel Left
 				transition_speed		:	1000,		// Speed of transition
 				new_window				:	0,			// Image links open in new window/tab
@@ -85,6 +85,14 @@
 <body <?php body_class(); ?>>
 
 <?php $bloginfo = get_bloginfo("wpurl")."/wp-content/themes/pera_soho/images/"; ?>
+
+<!--OPEN TABLE WIDGET OVERLAY-->
+<div class="open-table modal-hide center">
+	<a class="close-open-table-modal" href="">X</a>
+	<script type="text/javascript" src="https://secure.opentable.com/frontdoor/default.aspx?rid=76933&restref=76933&bgcolor=F6F6F3&titlecolor=cba978&subtitlecolor=0F0F0F&btnbgimage=https://secure.opentable.com/frontdoor/img/ot_btn_red.png&otlink=FFFFFF&icon=dark&mode=short"></script><a href="http://www.opentable.com/pera-soho-reservations-new-york?rtype=ism&restref=76933" class="OT_ExtLink">Pera Soho (76933), New York / Tri-State Area Reservations</a>
+</div>
+<div class="overlay">
+</div>
 
 <div id="page" class="hfeed site">
 	<div id="content" class="site-content">

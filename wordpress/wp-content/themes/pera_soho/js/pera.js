@@ -20,7 +20,13 @@
 			});
 		}
 	
-	
+		//SHOW OPEN TABLE POP-UP MODAL
+		var openTable = $('.open-table'); //SLIDING MENU ELEMENT
+		
+		$("a.open-reservation-box").on("click", toggleOpenTable);
+		
+		$("a.close-open-table-modal").on("click", toggleOpenTable);
+		
 		//CALL SLIDER WHEN PAGE LOADS
 		show_top_menu();
 		
@@ -186,12 +192,14 @@
 	
 	
 	
+	
+	
 		//REUSABLE FUNCTIONS
 	
 		//FUNCTION TO CHECK THE VERTICAL SCROLL POSITION OF THE WEBSITE
 		function show_top_menu() {
 			if($("body").hasClass("home")) { //TRIGGER ON HOMEPAGE OTHERWISE ALWAYS SHOW
-				if($(document).scrollTop() > 700) { //SHOW THE FIXED MENU AFTER SCROLLING DOWN 700PX
+				if($(document).scrollTop() > 500) { //SHOW THE FIXED MENU AFTER SCROLLING DOWN 700PX
 					$('#main-menu').css("opacity","1");
 				} else {
 					$('#main-menu').css("opacity","0");
@@ -225,6 +233,26 @@
 			$(menuRight).removeClass("cbp-spmenu-open");
 		
 			//e.preventDefault();
+		}
+		
+		//TOGGLE OPEN TABLE WIDGET
+		function toggleOpenTable(e) {
+			console.log("Clicked");
+		
+			openTable.toggleClass("modal-hide");
+			openTable.toggleClass("modal-show");
+			$(".overlay").toggle();
+		
+			e.preventDefault();
+		}
+		
+		//CLOSE OPEN TABLE WIDGET
+		function closeModal(e) {
+			openTable.toggleClass("modal-hide");
+			openTable.toggleClass("modal-show");
+			$(".overlay").toggleClass("shade");
+			
+			e.preventDefault();
 		}
 		
 		/*$('a[href*=#]:not([href=#])').click(function() {

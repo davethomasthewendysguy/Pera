@@ -1,3 +1,9 @@
+.shade {
+	background: rgb(0, 0, 0) !important; /* THE FALLBACK */
+    background: rgba(0, 0, 0, 0.5) !important;
+	transition: background .5s linear !important;
+}
+
 .full-module {
 	width: 100%;
 	overflow: auto;
@@ -168,7 +174,7 @@
 	z-index: 9000;
 	
 	@include between($desktop, $tablet-portrait) {
-		height: 144px;
+		height: 124px;
 	}
 	
 	@include smaller-than($tablet-portrait) {
@@ -196,14 +202,20 @@
 
 .roof-background {
 	background-image: url("images/roof-background.jpg");
+	background-repeat: no-repeat;
+	background-color: #000000;
 }
 
 .raw-ingredients-background {
 	background-image: url("images/raw-ingredients-background.jpg");
+	background-repeat: no-repeat;
+	background-color: #000000;
 }
 
 .train-wallpaper-background {
 	background-image: url("images/train-wallpaper-background.jpg");
+	background-repeat: no-repeat;
+	background-color: #000000;
 }
 
 .separator-inside {
@@ -384,11 +396,11 @@
 	display: block;
 }
 
-.float-left{ 
+.float-left { 
 	float: left !important;
 }
 
-.float-right{ 
+.float-right { 
 	float: right !important;
 }
 
@@ -549,6 +561,54 @@
 }
 
 .modal-hide {
-	display: none;
+	opacity: 0;
+	z-index: 9999;
 }
 
+.modal-show {
+	opacity: 1;
+}
+
+.modal-hide.open-table {
+	margin-top: -100%;
+}
+
+.open-table {
+	position: fixed;
+	margin-top: 0;
+	margin-left: -88px;
+	left: 50%;
+	width: 165px;
+	transition: all 1s ease-in-out;
+	z-index: 9999;
+}
+
+.close-open-table-modal {
+	display: block;
+	position: relative;
+	right: -165px;
+	top: 0px;
+	width: 24px;
+	height: 24px;
+	color: #000000;
+	cursor: pointer;
+	background: #ffffff;
+	border-radius: 12px;
+	font-weight: bold;
+}
+
+.overlay {
+	display: none;  /* ensures it’s invisible until it’s called */
+    position: fixed;  /* makes the div go into a position that’s absolute to the browser viewing area */
+    left: 0%; /* makes the div span all the way across the viewing area */
+    top: 0%; /* makes the div span all the way across the viewing area */
+    background-color: rgba(0, 0, 0, .7);
+    width: 100%;
+    height: 100%;
+    transition: all 1s ease-in-out;
+    z-index: 9998; /* makes the div the second most top layer, so it’ll lay on top of everything else EXCEPT for divs with a higher z-index (meaning the #overlay ruleset) */
+}
+
+.OT_ExtLink.OT_ExtLink {
+	color: #ffffff;
+}
