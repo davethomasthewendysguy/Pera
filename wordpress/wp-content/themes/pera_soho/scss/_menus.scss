@@ -50,6 +50,15 @@ nav.top-navigation {
 	}
 	
 	li.home-menu-option {
+		@include between($wide-desktop, $desktop) {
+			padding: 0;
+			position: absolute;
+			left: 50%;
+			margin-left: -180px;
+			top: 0%;
+			margin-top: -160px;
+		}
+	
 		a {
 			display: inline-block;
 			background-image:url('images/logo-large.png');
@@ -60,8 +69,8 @@ nav.top-navigation {
 			text-indent: -9000px;
 			
 			@include between(1330px, 960px) {
-				width: 200px;
-				height: 100px;
+				width: 360px;
+				height: 180px;
 				background-size: cover;
 			}
 			
@@ -95,10 +104,10 @@ nav.main-navigation {
 	.menu-top-menu-container {
 		ul {
 			position: relative;
-			left: -8px; /* HACK TO CENTER MENU PROPERLY */
+			left: -13px; /* HACK TO CENTER MENU PROPERLY, LEFT SIDE MENU CHARACTER COUNT IS MORE AND RIGHT */
 			
 			@include between($desktop, $tablet-portrait) {
-				left: -1px; /* HACK TO CENTER MENU PROPERLY */
+				left: -10px; /* HACK TO CENTER MENU PROPERLY, LEFT SIDE MENU CHARACTER COUNT IS MORE AND RIGHT */
 			}
 		}
 	}
@@ -145,9 +154,9 @@ nav.main-navigation {
 		a {
 			display: inline-block;
 			background-image:url('images/logo.png');
-			background-position: 0 center;
+			background-position: center center;
 			background-repeat: no-repeat;
-			width: 225px;
+			width: 224px;
 			height: 104px;
 			text-indent: -9000px;
 			

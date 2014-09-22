@@ -25,7 +25,7 @@ get_header(); ?>
 
 
 <div id="below-fold">
-	<div class="full-module white-background"><!--LOCATION AND HOURS-->
+	<div id="about-us" class="full-module white-background"><!--LOCATION AND HOURS-->
 		<div class="full-module-inside">
 			<a class="open-reservation-box" href="#"><img width="230" height="37" class="modal-pop-up center margin-medium" src="<?php echo $bloginfo ;?>make-a-reservation.png" alt="Make a Reservation" /></a>
 			
@@ -35,7 +35,7 @@ get_header(); ?>
 				<img src="<?php echo $bloginfo ;?>filigre-top.png" alt="Filigre border" />
 				
 				<div class="column1">
-					<p><a target="_blank" href="https://www.google.com/maps/place/Pera+Soho/@40.723831,-74.003389,17z/data=!3m1!4b1!4m2!3m1!1s0x89c2598c80b90e3d:0x8c053fe36e7d8561">54 Thompson Street (and Broome)<br />
+					<p><a target="_blank" href="https://www.google.com/maps/place/Pera+Soho/@40.723831,-74.003389,17z/data=!3m1!4b1!4m2!3m1!1s0x89c2598c80b90e3d:0x8c053fe36e7d8561">54 Thompson St (and Broome St)<br />
 					New York, NY 10012</a><br />
 					Ph. <a href="tel:+1-212-878-6305">212.878.6305</a></p>
 				</div>
@@ -56,12 +56,18 @@ get_header(); ?>
 	</div>
 	
 	<div class="full-module white-background"><!--SEPARATOR IMAGE-->
+		<div class="separator-inside margin-medium-bottom">
+			<a target="_blank" href="https://www.google.com/maps/place/54+Thompson+St/@40.7239637,-74.0036697,19z/data=!4m2!3m1!1s0x89c2598c7d22693d:0x5089669e6943b531"><img src="<?php echo $bloginfo; ?>matchbook-map.png" alt="Separator" /></a>
+		</div>
+	</div>
+	
+	<div class="full-module white-background"><!--SEPARATOR IMAGE-->
 		<div class="separator-inside">
 			<img src="<?php echo $bloginfo; ?>separator.png" alt="Separator" />
 		</div>
 	</div>
 	
-	<div id="about-us" class="full-module white-background"><!--ABOUT US-->
+	<div class="full-module white-background"><!--ABOUT US-->
 		<div class="full-module-inside">
 			<h3 class="uppercase center">About</h3>
 	
@@ -80,43 +86,6 @@ get_header(); ?>
 			<?php the_post(); ?>
 			
 			<div class="homepage-specials">
-				<?php
-					//Get 'Special' posts
-					$news_posts = get_posts(array(
-						'post_type' => 'post',
-						'posts_per_page' => 1, // Unlimited posts
-						'orderby' => 'date', // Order by date
-						'category' => -4
-					)); 
-				?>
-				
-				<?php if($news_posts): 
-					foreach ($news_posts as $post): 
-						setup_postdata($post);
-
-						// Resize and CDNize thumbnails using Automattic Photon service
-						$thumb_src = null;
-						if (has_post_thumbnail($post->ID)) {
-							$src = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'team-thumb' );
-							$thumb_src = $src[0];
-						}
-						?>
-						
-						<article class="four-column">
-							<?php if ( $thumb_src ): ?>
-								<a href="<?php echo get_permalink(); ?>"><img width="140" height="140" src="<?php echo $thumb_src; ?>" alt="<?php the_title(); ?>"></a>
-							<?php endif; ?>
-					
-							<h5 class="center uppercase"><?php the_title(); ?></h5>
-					
-							<?php the_excerpt(); ?>						
-						</article><!-- /.profile -->
-
-					<?php endforeach; ?>
-				<?php endif; ?>
-				
-				<?php wp_reset_query(); ?>
-				
 				<?php
 					//Get 'featured' posts
 					$news_posts = get_posts(array(
@@ -151,7 +120,46 @@ get_header(); ?>
 
 					<?php endforeach; ?>
 				<?php endif; ?>
+				
+				<?php wp_reset_query(); ?>				
+				
+				<?php
+					//Get latest post
+					$news_posts = get_posts(array(
+						'post_type' => 'post',
+						'posts_per_page' => 1, // Unlimited posts
+						'orderby' => 'date', // Order by date
+						'category' => -4
+					)); 
+				?>
+				
+				<?php if($news_posts): 
+					foreach ($news_posts as $post): 
+						setup_postdata($post);
+
+						// Resize and CDNize thumbnails using Automattic Photon service
+						$thumb_src = null;
+						if (has_post_thumbnail($post->ID)) {
+							$src = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'team-thumb' );
+							$thumb_src = $src[0];
+						}
+						?>
+						
+						<article class="four-column">
+							<?php if ( $thumb_src ): ?>
+								<a href="<?php echo get_permalink(); ?>"><img width="140" height="140" src="<?php echo $thumb_src; ?>" alt="<?php the_title(); ?>"></a>
+							<?php endif; ?>
+					
+							<h5 class="center uppercase"><?php the_title(); ?></h5>
+					
+							<?php the_excerpt(); ?>						
+						</article><!-- /.profile -->
+
+					<?php endforeach; ?>
+				<?php endif; ?>
 			</div>
+			
+			<div class="center bold uppercase"><a href="/pera-logue/">View All</a></div>
 		</div>
 	</div>
 	

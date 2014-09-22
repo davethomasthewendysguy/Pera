@@ -1,0 +1,22 @@
+#live-menu-container {
+	position: relative;
+
+	.live-menu {
+		/*position: absolute;*/
+		overflow: auto;
+		
+
+		h4 {
+			color: $black;
+			font-family: $steelfish;
+			font-size: 16px;
+			-webkit-text-rendering: optimizeLegibility;
+			-moz-text-rendering: optimizeLegibility;
+			text-rendering: optimizeLegibility;
+		}
+	}
+}
+
+#live-menu-brunch, #live-menu-lunch, #live-menu-dinner, #live-menu-dessert, #live-menu-happy-hour, #live-menu-rooftop {
+		display: none;
+}

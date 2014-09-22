@@ -17,11 +17,12 @@
 /*@import "superfish";*/
 @import "menus";
 @import "tipr";
+@import "open_table_overrides";
 
 //MODULES
 //@import "modules/opentable";
 @import "modules/homepage";
-@import "modules/menus";
+@import "modules/restaurant_menus";
 @import "modules/events";
 @import "modules/blog";
 @import "modules/404";

@@ -58,7 +58,7 @@
 		//LOAD APPROPRIATE MENU ON PAGE LOAD IF APPLICABLE
 		var page_load_hash = window.location.hash;
 		
-		console.log(page_load_hash);	
+		console.log(page_load_hash);
 			
 		if(page_load_hash) {
 			if(page_load_hash == "#brunch") {
@@ -201,11 +201,26 @@
 			if($("body").hasClass("home")) { //TRIGGER ON HOMEPAGE OTHERWISE ALWAYS SHOW
 				if($(document).scrollTop() > 500) { //SHOW THE FIXED MENU AFTER SCROLLING DOWN 700PX
 					$('#main-menu').css("opacity","1");
+					$('#logo-overlay').css("z-index","10");
 				} else {
 					$('#main-menu').css("opacity","0");
+					//$('#logo-overlay').css("z-index","9999");
+					
+					animationComplete();
+					
+					//$(body).find('#main-menu' ).css('opacity','0').end().find('#logo-overlay').css("z-index","9999");  
 				}
-			} else {
+			} else { //IF NOT ON HOMEPAGE, SET OPACITY TO 100%
 				$('#main-menu').css("opacity","1");
+			}
+		}
+		
+		//CHECK FOR CSS TRANSITION COMPLETION
+		function animationComplete() {
+			if($("#main-menu").css('opacity') == 0) {
+				$('#logo-overlay').css("z-index","10");
+			} else {
+				setTimeout(function(){animationComplete()}, 500);        
 			}
 		}
 		

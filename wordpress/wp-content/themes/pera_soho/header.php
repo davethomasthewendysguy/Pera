@@ -63,7 +63,8 @@
 													{image : 'wp-content/themes/pera_soho/images/slides/2.jpg', title : 'Image Credit: Big Idea'},
 													{image : 'wp-content/themes/pera_soho/images/slides/3.jpg', title : 'Image Credit: Big Idea'},
 													{image : 'wp-content/themes/pera_soho/images/slides/4.jpg', title : 'Image Credit: Big Idea'},
-													{image : 'wp-content/themes/pera_soho/images/slides/5.jpg', title : 'Image Credit: Big Idea'}
+													{image : 'wp-content/themes/pera_soho/images/slides/5.jpg', title : 'Image Credit: Big Idea'},							
+													{image : 'wp-content/themes/pera_soho/images/slides/6.jpg', title : 'Image Credit: Big Idea'}
 											],
 										
 				// Theme Options			   
@@ -106,7 +107,7 @@
 			<div class="full-module-menu-inside">
 				<nav id="site-navigation" class="main-navigation" role="navigation">
 					<div id="showRightPush" class="menu-toggle"><img src="<?php echo $bloginfo; ?>burger-menu.png" /></div>
-					<a href="<?php echo home_url(); ?>"><img class="mobile-menu-logo" width="60" height="30" src="<?php echo $bloginfo ;?>logo.png" /></a>
+					<a href="<?php echo home_url(); ?>"><img class="mobile-menu-logo" width="30" height="30" src="<?php echo $bloginfo ;?>small-black-star.png" /></a>
 			
 					<a class="skip-link screen-reader-text" href="#content"><?php _e( 'Skip to content', 'pera_soho' ); ?></a>
 

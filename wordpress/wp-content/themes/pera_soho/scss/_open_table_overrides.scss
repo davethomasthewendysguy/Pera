@@ -1,0 +1,51 @@
+#OT_form#OT_form {
+	width: 200px;
+}
+
+.OT_wrapper.OT_wrapper {
+	width: 200px;
+}
+
+.OT_title.OT_title {
+	width: 196px;
+	font-family: Avenir, Helvetica, Arial, Sans-Serif;
+}
+
+.OT_subtitle.OT_subtitle {
+	width: 196px;
+}
+
+.OT_day.OT_day, .OT_time.OT_time, .OT_party.OT_party {
+	width: 196px;
+	height: 50px;
+	background-repeat: no-repeat;
+}
+
+.OT_day.OT_day {
+	background-position: 9px -3px;
+}
+
+.OT_time.OT_time {
+	background-position: 9px -55px;
+}
+
+.OT_party.OT_party {
+	background-position: 9px -102px;
+}
+
+.OT_ExtLink:link.OT_ExtLink:link, .OT_ExtLink:visited.OT_ExtLink:visited, .OT_ExtLink:hover.OT_ExtLink:hover, .OT_ExtLink:active.OT_ExtLink:active {
+	margin: 10px 0 0 0;
+	width: 200px;
+	color: #ffffff;
+	font-family: Avenir, Helvetica, Arial, Sans-Serif;
+}
+
+.OT_searchTimeField.OT_searchTimeField, .OT_searchDateField.OT_searchDateField, .OT_searchPartyField.OT_searchPartyField {
+	font-family: Avenir, Helvetica, Arial, Sans-Serif;
+}
+
+.OT_submit.OT_submit {
+	margin: 0 0 10px 0;
+	padding: 10px 0 0 0;
+	width: 196px;
+}

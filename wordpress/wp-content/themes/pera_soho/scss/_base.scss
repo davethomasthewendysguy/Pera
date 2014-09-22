@@ -26,6 +26,11 @@ a:link, a:visited {
 	text-decoration: none;
 }
 
+a:hover, a:active {
+	color: $darkgold;
+	text-decoration: none;
+}
+
 h1.entry-title {
 	margin-bottom: 20px;
 	color: $black;
@@ -94,7 +99,7 @@ p {
 	top: 50%;
 	opacity: 0;
 	@include transition(opacity 1s linear);
-	
+	z-index: 9999;
 	
 	@include smaller-than($desktop) {
 		margin-top: -220px;

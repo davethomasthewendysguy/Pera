@@ -20,20 +20,22 @@
 			<div class="equal-columns">
 				<img class="center" src="<?php echo $bloginfo ;?>logo.png" alt="Pera Soho" />
 		
-				<p class="margin-small-top">54 Thompson Street<br />
+				<p class="margin-small-top">54 Thompson St<br />
 				New York, NY 10012<br />
-				at the corner of Broome Street<br />
+				at the corner of Broome St<br />
 				<br />
-				<a href="https://www.google.com/maps/place/54+Thompson+St/@40.7239637,-74.0036697,19z/data=!4m2!3m1!1s0x89c2598c7d22693d:0x5089669e6943b531">Map It!</a><br />
+				<a target="_blank" href="https://www.google.com/maps/place/54+Thompson+St/@40.7239637,-74.0036697,19z/data=!4m2!3m1!1s0x89c2598c7d22693d:0x5089669e6943b531">Map It!</a><br />
 				<br />
 				<span style="font-size:16px;">212.878.6305</span></p>
 			</div>
 			<div class="equal-columns margin-large-top margin-medium-bottom">
-				<h4 class="center uppercase">OUR MIDTOWN SISTER</h4>
+				<h4 class="center uppercase"><a style="color:#000000;" target="_blank" href="http://www.peranyc.com">OUR MIDTOWN SISTER</a></h4>
 
-				<p class="center small-font"><a href="http://www.peranyc.com">Pera Mediterranean Brasserie<br />
+				<p class="center small-font"><a target="_blank" href="http://www.peranyc.com">Pera Mediterranean Brasserie<br />
 				303 Madison Ave<br />
 				New York, NY 10017<br />
+				<br />
+				<a target="_blank" href="http://www.peranyc.com">www.peranyc.com</a><br />
 				<br />
 				(212) 878-6301</a></p>
 			</div>

@@ -14,7 +14,7 @@ get_header(); ?>
 
 			<section class="error-404 not-found">
 				<header class="page-header">
-					<h1 class="page-title uppercase center margin-medium-top"><?php _e( '404 / Page not found', 'pera_soho' ); ?></h1>
+					<h1 class="page-title uppercase center margin-medium-top"><?php _e( '404 / Sayfa bulunamadı (Page Not Found)', 'pera_soho' ); ?></h1>
 				</header><!-- .page-header -->
 
 				<div class="page-content">
