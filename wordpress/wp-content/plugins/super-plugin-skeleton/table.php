@@ -22,16 +22,20 @@ if(isset($_GET["action"])) {
 		$menu_item_type = $_GET["menu_item_type"];
 		$meal = $_GET["meal"];
 		$description = $_GET["description"];
+		$price = $_GET["price"];
+		$wine_type = $_GET["wine_type"];
 		$menu_order = $_GET["menu_order"];
 	} else if($action == "save") {
 		$id = $_POST["id"];
-		$menu_item = $_GET["menu_item"];
+		$menu_item = $_POST["menu_item"];
 		$menu_item_type = $_POST["menu_item_type"];
 		$meal = $_POST["meal"];
 		$description = $_POST["description"];
+		$price = $_POST["price"];
+		$wine_type = $_POST["wine_type"];
 		$menu_order = $_POST["menu_order"];
 		
-		save_menu_item($id, $menu_order, $menu_item, $meal, $description, $menu_item_type);
+		save_menu_item($id, $menu_order, $menu_item, $meal, $description, $price, $menu_item_type, $wine_type);
 	} else if($action == "delete") {
 		$id = $_GET["id"];
 		$meal = $_GET["meal"];
@@ -77,11 +81,10 @@ if(isset($_GET["move"]) && isset($_GET["switch_number"]) && isset($_GET["current
 }
 
 //FUNKY FUNCTIONS
-function save_menu_item($id, $menu_order, $menu_item = "", $meal = "", $description = "", $menu_item_type = "") {
-	if($id == "" || $id == NULL) {
-		
-		echo "Menu item: ".$menu_item;
-		
+function save_menu_item($id, $menu_order, $menu_item = "", $meal = "", $description = "", $price = 0, $menu_item_type = "", $wine_type = "") {
+	echo $wine_type;
+
+	if($id == "" || $id == NULL) {	
 		//TODO SET CHECK FOR NULL VALUES
 		$query = "SELECT MAX(menu_order) FROM restaurant_menu WHERE meal = {$meal}";
 		$result = mysql_query($query) or die("<div class='error'>Error 6: ".mysql_error()."</div>");
@@ -89,7 +92,7 @@ function save_menu_item($id, $menu_order, $menu_item = "", $meal = "", $descript
 		$menu_order = mysql_fetch_row($result);
 		$menu_order = $menu_order[0] + 1;
 	
-		$query2 = "INSERT INTO restaurant_menu (menu_item, meal, description, menu_order, menu_item_type) VALUES('{$menu_item}', '{$meal}', '{$description}', {$menu_order}, '{$menu_item_type}')";
+		$query2 = "INSERT INTO restaurant_menu (menu_item, meal, description, price, menu_order, menu_item_type, wine_type) VALUES('{$menu_item}', '{$meal}', '{$description}', {$price}, {$menu_order}, '{$menu_item_type}', '{$wine_type}')";
 		$result2 = mysql_query($query2) or die("<div class='error'>Error 7: ".mysql_error()."</div>");
 		
 		if($result) { ?>
@@ -98,7 +101,7 @@ function save_menu_item($id, $menu_order, $menu_item = "", $meal = "", $descript
 			</div>
 		<?php }
 	} else {	
-		$query = "UPDATE restaurant_menu SET menu_item = '{$menu_item}', meal = '{$meal}', description = '{$description}',  menu_item_type = '{$menu_item_type}' WHERE id = '".$id."'";
+		$query = "UPDATE restaurant_menu SET menu_item = '{$menu_item}', meal = '{$meal}', description = '{$description}', price = {$price},  menu_item_type = '{$menu_item_type}', wine_type = '{$wine_type}' WHERE id = '".$id."'";
 		$result = mysql_query($query) or die("<div class='error'>Error 8: ".mysql_error()."</div>");
 		
 		if($result) { ?>
@@ -123,23 +126,45 @@ function delete_menu_item($id, $meal, $menu_order) {
 	<?php }
 }
 
-function get_menu_item($id, $menu_item, $meal, $menu_order, $description = "") { ?>
+function get_menu_item($id, $menu_item, $meal, $menu_order, $description = "", $price, $menu_item_type = "", $wine_type = "") { ?>
 	<form action="http://dev.pera.com/wp-admin/admin.php?page=super_plugin_keithics&action=save" method="post">
 	<tr class="unapproved">
-		<td><input type="Submit" value="Save"></td>
+		<td><input type="Submit" value="Save"> <a href="http://dev.pera.com/wp-admin/admin.php?page=super_plugin_keithics">Cancel</a></td>
 		<td>
 			<input name="id" value="<?php echo $id; ?>" readonly />
 		</td>
 		<td>
-			<input type="text" name="menu_item" value="<?php echo $menu_item; ?>" />             
+			<input type="text" name="menu_item" value="<?php if($menu_item) { echo $menu_item; } ?>" />             
 		</td>
-		<td><input type="text" name="description" value="<?php echo $description; ?>" /></td>
+		<td>
+			<input type="text" name="description" value="<?php if($description) { echo $description; } ?>" />
+		</td>
+		<td>
+			<input type="text" name="price" value="<?php if($price) { echo $price; } ?>" />
+		</td>
 		<td>
 			<input type="text" name="meal" value="<?php echo $meal; ?>" /><br />
 			0 = Brunch / 1 = Lunch / 2 = Dinner / 3 = Dessert / 4 = Skydeck / 5 = Happy Hour
 		</td>
 		<td>
-			<input name="menu_item_type" value="<?php echo $menu_item_type; ?>" />
+			<select name="menu_item_type">
+				<option <?php if(!($menu_item_type)) { echo "selected"; } ?>></option>
+				<option <?php if($menu_item_type == "Dips and Chips") { echo "selected"; } ?> value="Dips and Chips">Dips & Chips</option>
+				<option <?php if($menu_item_type == "Main Plate") { echo "selected"; } ?> value="Main Plate">Main Plate</option>
+				<option <?php if($menu_item_type == "Meze") { echo "selected"; } ?> value="Mezes">Meze</option>
+				<option <?php if($menu_item_type == "Salad") { echo "selected"; } ?> value="Salad">Salad</option>
+				<option <?php if($menu_item_type == "Sides") { echo "selected"; } ?> value="Side">Sides</option>
+				<option <?php if($menu_item_type == "Specialty Cocktail") { echo "selected"; } ?> value="Cocktail">Specialty Cocktail</option>
+				<option <?php if($menu_item_type == "Wine") { echo "selected"; } ?> value="Wine">Wine</option>
+				<option <?php if($menu_item_type == "Dessert") { echo "selected"; } ?> value="Dessert">Dessert</option>
+			</select>
+		</td>
+		<td>
+			<select name="wine_type">
+				<option <?php if(!($wine_type)) { echo "selected"; } ?>></option>
+				<option <?php if($wine_type == "Red") { echo "selected"; } ?> value="Red">Red</option>
+				<option <?php if($wine_type == "White") { echo "selected"; } ?> value="White">White</option>
+			</select>
 		</td>
 		<td>
 			<input name="menu_order" value="<?php echo $menu_order; ?>" readonly />
@@ -158,7 +183,12 @@ function add_menu_item() { ?>
 		<td>
 			<input type="text" name="menu_item" value="" />             
 		</td>
-		<td><input type="text" name="description" value="" /></td>
+		<td>
+			<input type="text" name="description" value="" />
+		</td>
+		<td>
+			<input type="text" name="price" value="" />
+		</td>
 		<td>
 			<select name="meal">
 				<option selected></option>
@@ -176,10 +206,18 @@ function add_menu_item() { ?>
 				<option value="Dips and Chips">Dips & Chips</option>
 				<option value="Main Plate">Main Plate</option>
 				<option value="Mezes">Meze</option>
-				<option value="Oven">Oven</option>
+				<option value="Salad">Salad</option>
 				<option value="Side">Sides</option>
 				<option value="Cocktail">Specialty Cocktail</option>
 				<option value="Wine">Wine</option>
+				<option value="Dessert">Dessert</option>
+			</select>
+		</td>
+		<td>
+			<select name="wine_type">
+				<option selected></option>
+				<option value="Red">Red</option>
+				<option value="White">White</option>
 			</select>
 		</td>
 	</tr>
@@ -209,11 +247,12 @@ function get_menu($meal_option) {
 					<!--<span class="approve"><a href="#">Approved</a></span>
 					<span class="unapprove"><a href="#">Unapprove</a></span>-->
 					<?php //echo $url; ?>
-					<span class="edit"><a href="http://dev.pera.com/wp-admin/admin.php?page=super_plugin_keithics&action=edit&id=<?php echo $row['id']; ?>&description=<?php echo $row['description']; ?>&menu_item=<?php echo $row['menu_item']; ?>&meal=<?php echo $row['meal']; ?>&$menu_order=<?php echo $row['menu_order']; ?>&$menu_item_type=<?php echo $row['menu_item_type']; ?>">Edit</a> |</span>
+					<span class="edit"><a href="http://dev.pera.com/wp-admin/admin.php?page=super_plugin_keithics&action=edit&id=<?php echo $row['id']; ?>&description=<?php echo $row['description']; ?>&price=<?php echo $row['price']; ?>&menu_item=<?php echo $row['menu_item']; ?>&meal=<?php echo $row['meal']; ?>&$menu_order=<?php echo $row['menu_order']; ?>&menu_item_type=<?php echo $row['menu_item_type']; ?>&wine_type=<?php echo $row['wine_type']; ?>">Edit</a> |</span>
 					<span class="trash"> <a href="http://dev.pera.com/wp-admin/admin.php?page=super_plugin_keithics&action=delete&id=<?php echo $row['id']; ?>&meal=<?php echo $row['meal']; ?>&menu_order=<?php echo $row['menu_order']; ?>">Delete</a></span>
 					</div>                 
 				</td>
 				<td><?php echo $row["description"]; ?></td>
+				<td><?php echo $row["price"]; ?></td>
 				<td><?php if($row["meal"] == 0) {
 						echo "<span color='#7AA3CC !important'>Brunch</span>";
 					} else if($row["meal"] == 1) {
@@ -229,22 +268,23 @@ function get_menu($meal_option) {
 					}
 				 ?></td>
 				<td><?php echo $row["menu_item_type"]; ?></td>
+				<td><?php echo $row["wine_type"]; ?></td>
 				<td>
 					<?php echo $row["menu_order"]; ?>
 					<?php //echo "Row Count: ".$row_count; ?>
 					<?php //echo "Num Rows: ".mysql_num_rows($result); ?>
 					
 					<div class="row-actions">
-						<?php if($row["menu_order"] > 0 && $row_count > $row["menu_order"]) { ?>
+						<?php if($row["menu_order"] > 1 && $row_count > $row["menu_order"]) { ?>
 							<span class="approve"><a href="http://dev.pera.com/wp-admin/admin.php?page=super_plugin_keithics&move=up&id=<?php echo $row["id"]; ?>&current_number=<?php echo $row["menu_order"]; ?>&switch_number=<?php echo $row["menu_order"] - 1; ?>&meal=<?php echo $row["meal"]; ?>">Move up</a></span>
 							
-							<span class="trash"><a href="http://dev.pera.com/wp-admin/admin.php?page=super_plugin_keithics&move=up&id=<?php echo $row["id"]; ?>&current_number=<?php echo $row["menu_order"]; ?>&switch_number=<?php echo $row["menu_order"] + 1; ?>&meal=<?php echo $row["meal"]; ?>">Move down</a></span>
+							<span class="trash"><a href="http://dev.pera.com/wp-admin/admin.php?page=super_plugin_keithics&move=down&id=<?php echo $row["id"]; ?>&current_number=<?php echo $row["menu_order"]; ?>&switch_number=<?php echo $row["menu_order"] + 1; ?>&meal=<?php echo $row["meal"]; ?>">Move down</a></span>
 							
-						<?php } else if($row["menu_order"] == 0) { ?>
+						<?php } else if($row["menu_order"] == 1 && $row_count > 1) { ?>
 							
-							<span class="trash"><a href="http://dev.pera.com/wp-admin/admin.php?page=super_plugin_keithics&move=up&id=<?php echo $row["id"]; ?>&current_number=<?php echo $row["menu_order"]; ?>&switch_number=<?php echo $row["menu_order"] + 1; ?>&meal=<?php echo $row["meal"]; ?>">Move down</a></span>
+							<span class="trash"><a href="http://dev.pera.com/wp-admin/admin.php?page=super_plugin_keithics&move=down&id=<?php echo $row["id"]; ?>&current_number=<?php echo $row["menu_order"]; ?>&switch_number=<?php echo $row["menu_order"] + 1; ?>&meal=<?php echo $row["meal"]; ?>">Move down</a></span>
 							
-						<?php } else if($row_count == $row["menu_order"]) { ?>
+						<?php } else if($row_count == $row["menu_order"] && $row_count > 1) { ?>
 							
 							<span class="approve"> <a href="http://dev.pera.com/wp-admin/admin.php?page=super_plugin_keithics&move=up&id=<?php echo $row["id"]; ?>&current_number=<?php echo $row["menu_order"]; ?>&switch_number=<?php echo $row["menu_order"] - 1; ?>&meal=<?php echo $row["meal"]; ?>">Move up</a></span>
 							
@@ -259,6 +299,8 @@ function get_menu($meal_option) {
 				<td></td>
 				<td></td>
 				<td>No entries found</td>
+				<td></td>
+				<td></td>
 				<td></td>
 				<td></td>
 				<td></td>
@@ -281,31 +323,7 @@ function get_menu($meal_option) {
 </ul>
 
 <div class="tablenav">
-    <div class="tablenav-pages">
-        <span class="displaying-num">1-20 of 31</span>
-        <a class="page-numbers" href="#">&laquo;</a>
-        <a class="page-numbers" href="#">1</a>
-        <span class="page-numbers">2</span>
-        <a class="page-numbers" href="#">3</a>
-        <a class="page-numbers" href="#">4</a>
-        <a class="page-numbers" href="#">5</a>
-        <a class="page-numbers" href="#">&raquo;</a>
-    </div>
-    <div class="alignleft actions">
-        <select name="">
-            <option>Bulk Actions</option>
-            <option>Delete</option>
-            <option>Approve Job Post</option>
-            <option>Unapprove Job Post</option>
-        </select>
-        <input type="submit" class="button-secondary apply" value="Apply" />
-        <select name="">
-            <option>Filter Jobs</option>
-            <option>Approved Job Post</option>
-            <option>Unapproved Job Post</option>
-        </select>
-        <input type="submit" class="button-secondary apply" value="Filter" />
-    </div>
+    
 </div><!-- tablenav -->
 
 
@@ -317,8 +335,10 @@ function get_menu($meal_option) {
         <th width="45">ID</th>
         <th class="manage-column">Menu Item</th>
         <th class="manage-column">Description</th>
+        <th class="manage-column">Price</th>
         <th class="manage-column">Meal</th>
         <th class="manage-column">Menu Item Type</th>
+        <th class="manage-column">Wine Type</ht>
         <th class="manage-column">Menu Order</th>
     </tr>
     </thead>
@@ -326,7 +346,7 @@ function get_menu($meal_option) {
  		<?php if($action == add) {
 			add_menu_item();
 		} else if($action == edit) {
-			get_menu_item($id, $menu_item, $meal, $menu_item_type, $menu_order, $description, $menu_item_type);
+			get_menu_item($id, $menu_item, $meal, $menu_order, $description, $price, $menu_item_type, $wine_type);
 		} else {
 			if($empty_menu_count == NULL) {
 				$empty_menu_count = 0;
@@ -344,7 +364,7 @@ function get_menu($meal_option) {
 <!-- table data end -->
 
 <div class="tablenav">
-    <div class="tablenav-pages">
+    <!--<div class="tablenav-pages">
         <span class="displaying-num">1-20 of 31</span>
         <span class="page-numbers">1</span>
         <a class="page-numbers" href="#">2</a>
@@ -366,5 +386,5 @@ function get_menu($meal_option) {
             <option>Unapproved Job Post</option>
         </select>
         <input type="submit" class="button-secondary apply" value="Filter" />
-    </div>
+    </div>-->
 </div><!-- tablenav -->            

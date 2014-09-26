@@ -181,7 +181,7 @@ nav#food-navigation {
 	}
 }
 
-.menu-toggle {
+#showRightPush.menu-toggle {
 	@include smaller-than($tablet-portrait) {
 		position: absolute;
 		right: 10px;
@@ -197,7 +197,7 @@ nav#food-navigation {
 /* Slide out menu styles */
 .cbp-spmenu {
     position: fixed;
-    background: $darkred;
+    background: $tan;
     font-family: $avenir;
 	
 	ul {
@@ -233,13 +233,13 @@ nav#food-navigation {
  
 	a {
 		display: block;
-		color: #fff;
+		color: $black;
 		font-size: 16px;
 		text-transform: uppercase;
 		@include transition(background .5s ease-in-out);
 
 		&:hover, &:active {
-			color: $tan;
+			color: $black;
 			background: $white;
 		}
 	}
@@ -261,7 +261,7 @@ nav#food-navigation {
 		a {
 			display: block;
 			padding: 0;
-			color: #fff;
+			color: $black;
 			font-size: 40px;
 			font-weight: 300;
 			border: 0;

@@ -98,8 +98,8 @@
 <div id="page" class="hfeed site">
 	<div id="content" class="site-content">
 		<nav class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-right" id="cbp-spmenu-s2" role="navigation">
-			<h3 class="menu-toggle">NAVIGATION<?php //_e( 'Menu', 'bim_theme' ); ?></h3>
-
+			<h3 class="menu-toggle center margin-small-top"><img width="208" height="104" src="<?php echo $bloginfo; ?>logo.png" /></h3>
+			
 			<?php wp_nav_menu(array('theme_location' => 'primary')); ?>
 		</nav><!-- #site-navigation -->
 
@@ -110,8 +110,11 @@
 					<a href="<?php echo home_url(); ?>"><img class="mobile-menu-logo" width="30" height="30" src="<?php echo $bloginfo ;?>small-black-star.png" /></a>
 			
 					<a class="skip-link screen-reader-text" href="#content"><?php _e( 'Skip to content', 'pera_soho' ); ?></a>
-
-					<?php wp_nav_menu( array( 'theme_location' => 'primary' ) ); ?>
+					<?php if(is_front_page()) {
+						wp_nav_menu( array('theme_location' => 'primary'));
+					} else {
+						wp_nav_menu( array('theme_location' => 'secondary'));
+					} ?>
 				</nav><!-- #site-navigation -->
 			</div>
 		</div>

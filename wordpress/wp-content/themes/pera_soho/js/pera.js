@@ -40,102 +40,47 @@
 		//TOGGLE MENU WHEN MENU LINK OR CLOSE BUTTON IS CLICKED
 		showRightPush.on("click", toggleMenu);
 
-
-		/*$('#restaurant-menu-nav').click(function(e) {
-			var hash = location.hash.replace('#', '');
-		
-			console.log(hash);
-		
-			if(hash) {
-				$("#live-menu-" + hash).fadeIn("slow");
-			
-				console.log(hash);
-			}
-			
-			e.preventDefault();
-		});*/
 		
 		//LOAD APPROPRIATE MENU ON PAGE LOAD IF APPLICABLE
 		var page_load_hash = window.location.hash;
+		page_load_hash = page_load_hash.substring(1);
 		
-		console.log(page_load_hash);
-			
 		if(page_load_hash) {
-			if(page_load_hash == "#brunch") {
-				$("#live-menu-brunch").fadeIn("slow");
-			} else if(page_load_hash == "#lunch") {
-				$("#live-menu-lunch").fadeIn("slow");
-			} else if(page_load_hash == "#dinner") {
-				$("#live-menu-dinner").fadeIn("slow");
-			} else if(page_load_hash == "#dessert") {
-				$("#live-menu-dessert").fadeIn("slow");
-			} else if(page_load_hash == "#rooftop") {
-				$("#live-menu-rooftop").fadeIn("slow");
-			} else if(page_load_hash == "#happy-hour") {
-				$("#live-menu-happy-hour").fadeIn("slow");
-			}
-		}
-		
-		
+			$('.live-menu').each(function(i, obj) {					
+				if($(this).attr("id") == "live-menu-" + page_load_hash) {
+					$(this).fadeIn("slow");
+				} else {
+					$(this).fadeOut("slow");
+				}
+			});
+		} 
 		
 		$('a[href*=#]:not([href=#])').click(function(e) {
-			if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
-				$(".page-template-menu-php #food-navigation li").click(function() {
-					//FIND A BETTER WAY, TIME PERMETTING
-					if($(this).hasClass("brunch")) {
-						$("#live-menu-brunch").fadeIn("slow");
-						$("#live-menu-lunch").fadeOut("slow");
-						$("#live-menu-dinner").fadeOut("slow");
-						$("#live-menu-dessert").fadeOut("slow");
-						$("#live-menu-rooftop").fadeOut("slow");
-						$("#live-menu-happy-hour").fadeOut("slow");
+			if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {				
+				if($(this).parent().hasClass("food-menu")) {
+					
+					var new_menu;
+					
+					var menus = new Array("brunch","lunch","dinner","dessert","happy-hour","skydeck");
+					
+					//SET MENU TO SEARCH FOR
+					for(var i = 0; i < menus.length; i++) {
+						if($(this).parent().hasClass(menus[i])) {
+							new_menu = menus[i];
+							
+							break;  
+					  	}
 					}
 					
-					if($(this).hasClass("lunch")) {
-						$("#live-menu-lunch").fadeIn("slow");
-						$("#live-menu-brunch").fadeOut("slow");
-						$("#live-menu-dinner").fadeOut("slow");
-						$("#live-menu-dessert").fadeOut("slow");
-						$("#live-menu-rooftop").fadeOut("slow");
-						$("#live-menu-happy-hour").fadeOut("slow");
-					}
-					
-					if($(this).hasClass("dinner")) {
-						$("#live-menu-dinner").fadeIn("slow");
-						$("#live-menu-brunch").fadeOut("slow");
-						$("#live-menu-lunch").fadeOut("slow");
-						$("#live-menu-dessert").fadeOut("slow");
-						$("#live-menu-rooftop").fadeOut("slow");
-						$("#live-menu-happy-hour").fadeOut("slow");
-					}
-					
-					if($(this).hasClass("dessert")) {
-						$("#live-menu-dessert").fadeIn("slow");
-						$("#live-menu-brunch").fadeOut("slow");
-						$("#live-menu-lunch").fadeOut("slow");
-						$("#live-menu-dinner").fadeOut("slow");
-						$("#live-menu-rooftop").fadeOut("slow");
-						$("#live-menu-happy-hour").fadeOut("slow");
-					}
-					
-					if($(this).hasClass("rooftop")) {
-						$("#live-menu-rooftop").fadeIn("slow");
-						$("#live-menu-brunch").fadeOut("slow");
-						$("#live-menu-lunch").fadeOut("slow");
-						$("#live-menu-dinner").fadeOut("slow");
-						$("#live-menu-dessert").fadeOut("slow");
-						$("#live-menu-happy-hour").fadeOut("slow");
-					}
-					
-					if($(this).hasClass("happy-hour")) {
-						$("#live-menu-happy-hour").fadeIn("slow");
-						$("#live-menu-brunch").fadeOut("slow");
-						$("#live-menu-lunch").fadeOut("slow");
-						$("#live-menu-dinner").fadeOut("slow");
-						$("#live-menu-dessert").fadeOut("slow");
-						$("#live-menu-rooftop").fadeOut("slow");
-					}
-				});
+					//FADE IN APPROPRIATE MENU
+					$('.live-menu').each(function(i, obj) {					
+						if($(this).attr("id") == "live-menu-" + new_menu) {
+							$(this).fadeIn("slow");
+						} else {
+							$(this).fadeOut("slow");
+						}
+					});
+				}
 				
 				var target = $(this.hash);
 				
@@ -151,10 +96,10 @@
 						scrollTop: target.offset().top - 170
 					}, 1000);
 					
-					console.log("Alert");
+					//console.log("Alert");
 					
 					$(".page-template-menu-php #food-navigation").click(function() {
-						console.log("Alert 2");
+						//console.log("Alert 2");
 					});
 					
 					/*$("#site-navigation").click(function() {
@@ -199,12 +144,14 @@
 		//FUNCTION TO CHECK THE VERTICAL SCROLL POSITION OF THE WEBSITE
 		function show_top_menu() {
 			if($("body").hasClass("home")) { //TRIGGER ON HOMEPAGE OTHERWISE ALWAYS SHOW
-				if($(document).scrollTop() > 500) { //SHOW THE FIXED MENU AFTER SCROLLING DOWN 700PX
+				if($(document).scrollTop() > 500) { //SHOW THE FIXED MENU AFTER SCROLLING DOWN 500PX
+					//console.log("Works");
+					
 					$('#main-menu').css("opacity","1");
 					$('#logo-overlay').css("z-index","10");
 				} else {
 					$('#main-menu').css("opacity","0");
-					//$('#logo-overlay').css("z-index","9999");
+					$('#logo-overlay').css("z-index","9997");
 					
 					animationComplete();
 					
@@ -218,7 +165,7 @@
 		//CHECK FOR CSS TRANSITION COMPLETION
 		function animationComplete() {
 			if($("#main-menu").css('opacity') == 0) {
-				$('#logo-overlay').css("z-index","10");
+				//$('#logo-overlay').css("z-index","10");
 			} else {
 				setTimeout(function(){animationComplete()}, 500);        
 			}
@@ -252,7 +199,7 @@
 		
 		//TOGGLE OPEN TABLE WIDGET
 		function toggleOpenTable(e) {
-			console.log("Clicked");
+			//console.log("Clicked");
 		
 			openTable.toggleClass("modal-hide");
 			openTable.toggleClass("modal-show");

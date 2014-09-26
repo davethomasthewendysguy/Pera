@@ -14,8 +14,12 @@ get_header(); ?>
 	<div id="events-container" class="full-module white-background live-menu"><!--BRUNCH MENU-->
 		<div class="full-module-inside">
 			<h3 class="uppercase center">Events</h3>
-			
-			<p class="center">Vel hac eu integer mattis natoque et? Elementum, aenean sed, proin augue ultrices dolor facilisis massa? Phasellus sed, magna a sagittis! Cum augue arcu elementum platea tincidunt facilisis et enim, vut est pellentesque nisi, vut? Ridiculus augue parturient dis elementum. Aliquam, mattis habitasse vut porta ultricies, quis turpis, diam.</p>
+				
+				<div class="center-copy">
+					<?php while(have_posts()) : the_post(); ?>
+						<?php the_content(); ?>
+					<?php endwhile; // end of the loop. ?>
+				</div>
 		</div>
 	</div>
 	
@@ -57,21 +61,23 @@ get_header(); ?>
 					}
 					?>
 			
-					<article class="specials-module-inside margin-large-bottom">
+					<article class="full-module-inside margin-large-bottom">
 						<h3 class="center uppercase"><?php the_title(); ?></h3>						
 								
-						<div class="info-box-small <?php if($i % 2) { echo 'margin-medium-left float-right'; } else { echo 'margin-medium-right float-left'; } ?>">
+						<div class="info-box-medium <?php if($i % 2) { echo 'margin-medium-left float-right'; } else { echo 'margin-medium-right float-left'; } ?>">
 							<img class="full-width-image block" src="<?php echo $bloginfo; ?>filigre-top-small.png" alt="Filigre border" />
 							<?php the_content(); ?>	
 						
-							<img class="full-width-image block absolute bottom-5px max-width-274" src="<?php echo $bloginfo; ?>filigre-bottom-small.png" alt="Filigre border" />
+							<img class="full-width-image block absolute bottom-5px max-width-428" src="<?php echo $bloginfo; ?>filigre-bottom-small.png" alt="Filigre border" />
 						</div>
-					
-						<?php if($event_slider): ?>
-							<?php putRevSlider("event_room_".$event_slider); ?>				
-						<?php elseif($thumb_src): ?>
+						
+						<div class="event-slider-container">
+							<?php if($event_slider): ?>
+								<?php putRevSlider("event_room_".$event_slider); ?>				
+							<?php elseif($thumb_src): ?>
 						
 							<img class="featured-image float-left" src="<?php echo $thumb_src; ?>" alt="<?php the_title(); ?>">
+						</div>
 						<?php endif; ?>
 					</article><!-- /.profile -->
 				

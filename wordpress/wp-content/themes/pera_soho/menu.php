@@ -6,12 +6,6 @@
  * @author Simple Themes - www.simplethemes.com
 */
 
-/*if(!(empty($_GET["meal_option"]))) {
-	$meal_option = $_GET["meal_option"];
-} else {
-	$meal_option == 2;
-}*/
-
 $bloginfo = get_bloginfo("wpurl")."/wp-content/themes/pera_soho/images/";
 $base_url = get_bloginfo("wpurl");
 
@@ -30,7 +24,11 @@ get_header(); ?>
 				<img class="full-width-image" src="<?php echo $bloginfo ;?>filigre-bottom.png" alt="Filigre border" />
 			</div>
 			
-			<p class="center">Our signature mezes and entree dishes that are so popular with New Yorkers made the trip with us when we opened another Pera in Soho. But we took our customers off the beaten path into parts of Eastern Mediterranean cuisine that rarely make it across the Atlantic. Like only the best restaurants in New York, we challenge your taste buds with incredible creations, such as Pistachio Crusted Snapper and Marinated Sliced Sirloin Steak “Shaslik.</p>
+			<div class="center-copy">
+				<?php while(have_posts()) : the_post(); ?>
+					<?php the_content(); ?>
+				<?php endwhile; // end of the loop. ?>
+			</div>
 		</div>
 	</div>
 	<div class="full-module white-background"><!--SEPARATOR IMAGE-->
@@ -75,8 +73,36 @@ get_header(); ?>
 		<div id="live-menu-brunch" class="full-module white-background live-menu"><!--BRUNCH MENU-->
 			<div class="specials-module-inside">
 				<div class="three-column">
+					<h3 class="uppercase no-margin-bottom">Wines by the Glass</h3>
+					<h4 class="uppercase">Sommelier's Selection</h4>
+			
+					<p class="uppercase bold medium-font no-margin">White</p>
+					
+					<?php 
+						for ($i = 0; $i < count($rows); ++$i) {					
+							//if($rows[$i]["wine_type"] == "White") {
+							if($rows[$i]["menu_item_type"] == "Wine") {
+								echo '<p class="smaller-font no-margin">'.$rows[$i]['menu_item'].'....'.$rows[$i]['price'].'</p>';
+								echo '<p class="smaller-font">'.$rows[$i]['description'].'</p>';
+							}
+						}
+					?>
+					
+					<p class="uppercase bold medium-font no-margin">Red</p>
+					
+					<?php 
+						for ($i = 0; $i < count($rows); ++$i) {					
+							//if($rows[$i]["wine_type"] == "Red") {
+							if($rows[$i]["menu_item_type"] == "Wine") {
+								echo '<p class="smaller-font no-margin">'.$rows[$i]['menu_item'].'....'.$rows[$i]['price'].'</p>';
+								echo '<p class="smaller-font">'.$rows[$i]['description'].'</p>';
+							}
+						}
+					?>
+				</div>
+				<div class="three-column">
 					<h3 class="uppercase">Dips & Chips</h3>
-				
+					
 					<?php
 						for ($i = 0; $i < count($rows); ++$i) {
 							if($rows[$i]["menu_item_type"] == "Dips and Chips") {
@@ -85,13 +111,12 @@ get_header(); ?>
 							}
 						}
 					?>
-				</div>
-				<div class="three-column">
-					<h3 class="uppercase">Oven</h3>
+					
+					<h3 class="uppercase">Salad</h3>
 				
 					<?php 
 						for ($i = 0; $i < count($rows); ++$i) {	
-							if($rows[$i]["menu_item_type"] == "Oven") {
+							if($rows[$i]["menu_item_type"] == "Salad") {
 								echo '<p class="uppercase bold medium-font no-margin">'.$rows[$i]['menu_item'].'....'.$rows[$i]['price'].'</p>';
 								echo '<p class="smaller-font">'.$rows[$i]['description'].'</p>';
 							}
@@ -122,9 +147,9 @@ get_header(); ?>
 								if($rows[$i]['menu_item_type'] == "Mezes") {
 									$rows2[$j]["id"] = $rows[$i]["id"];
 									$rows2[$j]["description"] = $rows[$i]["description"];
-									$rows2[$j]["menu_item"] = $rows[$i]["menu_item"];
-									$rows2[$j]["menu_item_tyoe"] = $rows[$i]["menu_item_tyoe"];
 									$rows2[$j]["price"] = $rows[$i]["price"];
+									$rows2[$j]["menu_item"] = $rows[$i]["menu_item"];
+									$rows2[$j]["menu_item_type"] = $rows[$i]["menu_item_type"];
 									
 									$j++;
 								}
@@ -133,7 +158,7 @@ get_header(); ?>
 							reset($rows2);
 						
 						
-							for ($i = 0; $i < count($rows2)/2; ++$i) {					
+							for ($i = 0; $i < count($rows2)/3; ++$i) {					
 
 									echo '<p class="uppercase bold medium-font no-margin">'.$rows2[$i]['menu_item'].'....'.$rows2[$i]['price'].'</p>';
 									echo '<p class="smaller-font">'.$rows2[$i]['description'].'</p>';
@@ -146,7 +171,7 @@ get_header(); ?>
 					</div>
 					<div class="three-column">
 						<?php 
-							for ($i = $j; $i < count($rows2); ++$i) {				
+							for ($i = $j; $i < count($rows2)/3; ++$i) {				
 								echo '<p class="uppercase bold medium-font no-margin">'.$rows2[$i]['menu_item'].'....'.$rows2[$i]['price'].'</p>';
 								echo '<p class="smaller-font">'.$rows2[$i]['description'].'</p>';
 							}
@@ -155,29 +180,13 @@ get_header(); ?>
 						?>
 					</div>
 					<div class="three-column">
-						<h4 class="uppercase">Wines by the Glass<br />
-						Sommelier's Selection</h4>
-				
-						<p class="uppercase bold medium-font no-margin">White</p>
-						
 						<?php 
-							for ($i = 0; $i < count($rows); ++$i) {					
-								if($rows[$i]["wine_type"] == "White") {
-									echo '<p class="smaller-font no-margin">'.$rows[$i]['menu_item'].'....'.$rows[$i]['price'].'</p>';
-									echo '<p class="smaller-font">'.$rows[$i]['description'].'</p>';
-								}
+							for ($i = $j; $i < count($rows2)/3; ++$i) {		
+								echo '<p class="uppercase bold medium-font no-margin">'.$rows2[$i]['menu_item'].'....'.$rows2[$i]['price'].'</p>';
+								echo '<p class="smaller-font">'.$rows2[$i]['description'].'</p>';
 							}
-						?>
-						
-						<p class="uppercase bold medium-font no-margin">Red</p>
-						
-						<?php 
-							for ($i = 0; $i < count($rows); ++$i) {					
-								if($rows[$i]["wine_type"] == "Red") {
-									echo '<p class="smaller-font no-margin">'.$rows[$i]['menu_item'].'....'.$rows[$i]['price'].'</p>';
-									echo '<p class="smaller-font">'.$rows[$i]['description'].'</p>';
-								}
-							}
+							
+							reset($rows2);
 						?>
 					</div>
 				</div>
@@ -235,8 +244,36 @@ get_header(); ?>
 		<div id="live-menu-lunch" class="full-module white-background live-menu"><!--LUNCH MENU-->
 			<div class="specials-module-inside">
 				<div class="three-column">
+					<h3 class="uppercase no-margin-bottom">Wines by the Glass</h3>
+					<h4 class="uppercase">Sommelier's Selection</h4>
+			
+					<p class="uppercase bold medium-font no-margin">White</p>
+					
+					<?php 
+						for ($i = 0; $i < count($rows); ++$i) {					
+							//if($rows[$i]["wine_type"] == "White") {
+							if($rows[$i]["menu_item_type"] == "Wine") {
+								echo '<p class="smaller-font no-margin">'.$rows[$i]['menu_item'].'....'.$rows[$i]['price'].'</p>';
+								echo '<p class="smaller-font">'.$rows[$i]['description'].'</p>';
+							}
+						}
+					?>
+					
+					<p class="uppercase bold medium-font no-margin">Red</p>
+					
+					<?php 
+						for ($i = 0; $i < count($rows); ++$i) {					
+							//if($rows[$i]["wine_type"] == "Red") {
+							if($rows[$i]["menu_item_type"] == "Wine") {
+								echo '<p class="smaller-font no-margin">'.$rows[$i]['menu_item'].'....'.$rows[$i]['price'].'</p>';
+								echo '<p class="smaller-font">'.$rows[$i]['description'].'</p>';
+							}
+						}
+					?>
+				</div>
+				<div class="three-column">
 					<h3 class="uppercase">Dips & Chips</h3>
-				
+					
 					<?php
 						for ($i = 0; $i < count($rows); ++$i) {
 							if($rows[$i]["menu_item_type"] == "Dips and Chips") {
@@ -245,13 +282,12 @@ get_header(); ?>
 							}
 						}
 					?>
-				</div>
-				<div class="three-column">
-					<h3 class="uppercase">Oven</h3>
+					
+					<h3 class="uppercase">Salad</h3>
 				
 					<?php 
 						for ($i = 0; $i < count($rows); ++$i) {	
-							if($rows[$i]["menu_item_type"] == "Oven") {
+							if($rows[$i]["menu_item_type"] == "Salad") {
 								echo '<p class="uppercase bold medium-font no-margin">'.$rows[$i]['menu_item'].'....'.$rows[$i]['price'].'</p>';
 								echo '<p class="smaller-font">'.$rows[$i]['description'].'</p>';
 							}
@@ -282,9 +318,9 @@ get_header(); ?>
 								if($rows[$i]['menu_item_type'] == "Mezes") {
 									$rows2[$j]["id"] = $rows[$i]["id"];
 									$rows2[$j]["description"] = $rows[$i]["description"];
-									$rows2[$j]["menu_item"] = $rows[$i]["menu_item"];
-									$rows2[$j]["menu_item_tyoe"] = $rows[$i]["menu_item_tyoe"];
 									$rows2[$j]["price"] = $rows[$i]["price"];
+									$rows2[$j]["menu_item"] = $rows[$i]["menu_item"];
+									$rows2[$j]["menu_item_type"] = $rows[$i]["menu_item_type"];
 									
 									$j++;
 								}
@@ -293,7 +329,7 @@ get_header(); ?>
 							reset($rows2);
 						
 						
-							for ($i = 0; $i < count($rows2)/2; ++$i) {					
+							for ($i = 0; $i < count($rows2)/3; ++$i) {					
 
 									echo '<p class="uppercase bold medium-font no-margin">'.$rows2[$i]['menu_item'].'....'.$rows2[$i]['price'].'</p>';
 									echo '<p class="smaller-font">'.$rows2[$i]['description'].'</p>';
@@ -306,7 +342,7 @@ get_header(); ?>
 					</div>
 					<div class="three-column">
 						<?php 
-							for ($i = $j; $i < count($rows2); ++$i) {				
+							for ($i = $j; $i < count($rows2)/3; ++$i) {				
 								echo '<p class="uppercase bold medium-font no-margin">'.$rows2[$i]['menu_item'].'....'.$rows2[$i]['price'].'</p>';
 								echo '<p class="smaller-font">'.$rows2[$i]['description'].'</p>';
 							}
@@ -315,29 +351,13 @@ get_header(); ?>
 						?>
 					</div>
 					<div class="three-column">
-						<h4 class="uppercase">Wines by the Glass<br />
-						Sommelier's Selection</h4>
-				
-						<p class="uppercase bold medium-font no-margin">White</p>
-						
 						<?php 
-							for ($i = 0; $i < count($rows); ++$i) {					
-								if($rows[$i]["wine_type"] == "White") {
-									echo '<p class="smaller-font no-margin">'.$rows[$i]['menu_item'].'....'.$rows[$i]['price'].'</p>';
-									echo '<p class="smaller-font">'.$rows[$i]['description'].'</p>';
-								}
+							for ($i = $j; $i < count($rows2)/3; ++$i) {		
+								echo '<p class="uppercase bold medium-font no-margin">'.$rows2[$i]['menu_item'].'....'.$rows2[$i]['price'].'</p>';
+								echo '<p class="smaller-font">'.$rows2[$i]['description'].'</p>';
 							}
-						?>
-						
-						<p class="uppercase bold medium-font no-margin">Red</p>
-						
-						<?php 
-							for ($i = 0; $i < count($rows); ++$i) {					
-								if($rows[$i]["wine_type"] == "Red") {
-									echo '<p class="smaller-font no-margin">'.$rows[$i]['menu_item'].'....'.$rows[$i]['price'].'</p>';
-									echo '<p class="smaller-font">'.$rows[$i]['description'].'</p>';
-								}
-							}
+							
+							reset($rows2);
 						?>
 					</div>
 				</div>
@@ -346,6 +366,7 @@ get_header(); ?>
 			
 				<div class="oveflow-auto">
 					<h3 class="uppercase center">Plates</h3>
+					
 					
 					<?php 
 						for ($i = 0; $i < count($rows); ++$i) {					
@@ -376,13 +397,13 @@ get_header(); ?>
 				</div>
 			
 				<div class="small-module-inside white-background">
-					<a href="<?php echo $base_url; ?>/wp-content/uploads/2014/06/lunch_menu.pdf"><img width="230" height="37" class="clear-both float-left margin-small-right" src="http://dev.pera.com/wp-content/themes/pera_soho/images/download-menu.png" alt="Download Menu"></a>
+					<a href="<?php echo $base_url; ?>/wp-content/uploads/2014/06/dinner_menu.pdf"><img width="230" height="37" class="clear-both float-left margin-small-right" src="http://dev.pera.com/wp-content/themes/pera_soho/images/download-menu.png" alt="Download Menu"></a>
 			
 					<a href="http://www.opentable.com/pera-soho-reservations-new-york?restref=76933"><img width="230" height="37" class="float-left" src="http://dev.pera.com/wp-content/themes/pera_soho/images/make-a-reservation.png" alt="Make a Reservation"></a>
 				</div>
 			</div>
 		</div>
-	
+		
 		<?php
 			$rows = [];
 		
@@ -394,8 +415,36 @@ get_header(); ?>
 		<div id="live-menu-dinner" class="full-module white-background live-menu"><!--DINNER MENU-->
 			<div class="specials-module-inside">
 				<div class="three-column">
+					<h3 class="uppercase no-margin-bottom">Wines by the Glass</h3>
+					<h4 class="uppercase">Sommelier's Selection</h4>
+			
+					<p class="uppercase bold medium-font no-margin">White</p>
+					
+					<?php 
+						for ($i = 0; $i < count($rows); ++$i) {					
+							//if($rows[$i]["wine_type"] == "White") {
+							if($rows[$i]["menu_item_type"] == "Wine") {
+								echo '<p class="smaller-font no-margin">'.$rows[$i]['menu_item'].'....'.$rows[$i]['price'].'</p>';
+								echo '<p class="smaller-font">'.$rows[$i]['description'].'</p>';
+							}
+						}
+					?>
+					
+					<p class="uppercase bold medium-font no-margin">Red</p>
+					
+					<?php 
+						for ($i = 0; $i < count($rows); ++$i) {					
+							//if($rows[$i]["wine_type"] == "Red") {
+							if($rows[$i]["menu_item_type"] == "Wine") {
+								echo '<p class="smaller-font no-margin">'.$rows[$i]['menu_item'].'....'.$rows[$i]['price'].'</p>';
+								echo '<p class="smaller-font">'.$rows[$i]['description'].'</p>';
+							}
+						}
+					?>
+				</div>
+				<div class="three-column">
 					<h3 class="uppercase">Dips & Chips</h3>
-				
+					
 					<?php
 						for ($i = 0; $i < count($rows); ++$i) {
 							if($rows[$i]["menu_item_type"] == "Dips and Chips") {
@@ -404,13 +453,12 @@ get_header(); ?>
 							}
 						}
 					?>
-				</div>
-				<div class="three-column">
-					<h3 class="uppercase">Oven</h3>
+					
+					<h3 class="uppercase">Salad</h3>
 				
 					<?php 
 						for ($i = 0; $i < count($rows); ++$i) {	
-							if($rows[$i]["menu_item_type"] == "Oven") {
+							if($rows[$i]["menu_item_type"] == "Salad") {
 								echo '<p class="uppercase bold medium-font no-margin">'.$rows[$i]['menu_item'].'....'.$rows[$i]['price'].'</p>';
 								echo '<p class="smaller-font">'.$rows[$i]['description'].'</p>';
 							}
@@ -441,9 +489,9 @@ get_header(); ?>
 								if($rows[$i]['menu_item_type'] == "Mezes") {
 									$rows2[$j]["id"] = $rows[$i]["id"];
 									$rows2[$j]["description"] = $rows[$i]["description"];
-									$rows2[$j]["menu_item"] = $rows[$i]["menu_item"];
-									$rows2[$j]["menu_item_tyoe"] = $rows[$i]["menu_item_tyoe"];
 									$rows2[$j]["price"] = $rows[$i]["price"];
+									$rows2[$j]["menu_item"] = $rows[$i]["menu_item"];
+									$rows2[$j]["menu_item_type"] = $rows[$i]["menu_item_type"];
 									
 									$j++;
 								}
@@ -452,7 +500,7 @@ get_header(); ?>
 							reset($rows2);
 						
 						
-							for ($i = 0; $i < count($rows2)/2; ++$i) {					
+							for ($i = 0; $i < count($rows2)/3; ++$i) {					
 
 									echo '<p class="uppercase bold medium-font no-margin">'.$rows2[$i]['menu_item'].'....'.$rows2[$i]['price'].'</p>';
 									echo '<p class="smaller-font">'.$rows2[$i]['description'].'</p>';
@@ -465,7 +513,7 @@ get_header(); ?>
 					</div>
 					<div class="three-column">
 						<?php 
-							for ($i = $j; $i < count($rows2); ++$i) {				
+							for ($i = $j; $i < count($rows2)/3; ++$i) {				
 								echo '<p class="uppercase bold medium-font no-margin">'.$rows2[$i]['menu_item'].'....'.$rows2[$i]['price'].'</p>';
 								echo '<p class="smaller-font">'.$rows2[$i]['description'].'</p>';
 							}
@@ -474,29 +522,13 @@ get_header(); ?>
 						?>
 					</div>
 					<div class="three-column">
-						<h4 class="uppercase">Wines by the Glass<br />
-						Sommelier's Selection</h4>
-				
-						<p class="uppercase bold medium-font no-margin">White</p>
-						
 						<?php 
-							for ($i = 0; $i < count($rows); ++$i) {					
-								if($rows[$i]["wine_type"] == "White") {
-									echo '<p class="smaller-font no-margin">'.$rows[$i]['menu_item'].'....'.$rows[$i]['price'].'</p>';
-									echo '<p class="smaller-font">'.$rows[$i]['description'].'</p>';
-								}
+							for ($i = $j; $i < count($rows2)/3; ++$i) {		
+								echo '<p class="uppercase bold medium-font no-margin">'.$rows2[$i]['menu_item'].'....'.$rows2[$i]['price'].'</p>';
+								echo '<p class="smaller-font">'.$rows2[$i]['description'].'</p>';
 							}
-						?>
-						
-						<p class="uppercase bold medium-font no-margin">Red</p>
-						
-						<?php 
-							for ($i = 0; $i < count($rows); ++$i) {					
-								if($rows[$i]["wine_type"] == "Red") {
-									echo '<p class="smaller-font no-margin">'.$rows[$i]['menu_item'].'....'.$rows[$i]['price'].'</p>';
-									echo '<p class="smaller-font">'.$rows[$i]['description'].'</p>';
-								}
-							}
+							
+							reset($rows2);
 						?>
 					</div>
 				</div>
@@ -534,7 +566,7 @@ get_header(); ?>
 						}
 					?>
 				</div>
-
+			
 				<div class="small-module-inside white-background">
 					<a href="<?php echo $base_url; ?>/wp-content/uploads/2014/06/dinner_menu.pdf"><img width="230" height="37" class="clear-both float-left margin-small-right" src="http://dev.pera.com/wp-content/themes/pera_soho/images/download-menu.png" alt="Download Menu"></a>
 			
@@ -554,8 +586,36 @@ get_header(); ?>
 		<div id="live-menu-dessert" class="full-module white-background live-menu"><!--DESSERT MENU-->
 			<div class="specials-module-inside">
 				<div class="three-column">
+					<h3 class="uppercase no-margin-bottom">Wines by the Glass</h3>
+					<h4 class="uppercase">Sommelier's Selection</h4>
+			
+					<p class="uppercase bold medium-font no-margin">White</p>
+					
+					<?php 
+						for ($i = 0; $i < count($rows); ++$i) {					
+							//if($rows[$i]["wine_type"] == "White") {
+							if($rows[$i]["menu_item_type"] == "Wine") {
+								echo '<p class="smaller-font no-margin">'.$rows[$i]['menu_item'].'....'.$rows[$i]['price'].'</p>';
+								echo '<p class="smaller-font">'.$rows[$i]['description'].'</p>';
+							}
+						}
+					?>
+					
+					<p class="uppercase bold medium-font no-margin">Red</p>
+					
+					<?php 
+						for ($i = 0; $i < count($rows); ++$i) {					
+							//if($rows[$i]["wine_type"] == "Red") {
+							if($rows[$i]["menu_item_type"] == "Wine") {
+								echo '<p class="smaller-font no-margin">'.$rows[$i]['menu_item'].'....'.$rows[$i]['price'].'</p>';
+								echo '<p class="smaller-font">'.$rows[$i]['description'].'</p>';
+							}
+						}
+					?>
+				</div>
+				<div class="three-column">
 					<h3 class="uppercase">Dips & Chips</h3>
-				
+					
 					<?php
 						for ($i = 0; $i < count($rows); ++$i) {
 							if($rows[$i]["menu_item_type"] == "Dips and Chips") {
@@ -564,13 +624,12 @@ get_header(); ?>
 							}
 						}
 					?>
-				</div>
-				<div class="three-column">
-					<h3 class="uppercase">Oven</h3>
+					
+					<h3 class="uppercase">Salad</h3>
 				
 					<?php 
 						for ($i = 0; $i < count($rows); ++$i) {	
-							if($rows[$i]["menu_item_type"] == "Oven") {
+							if($rows[$i]["menu_item_type"] == "Salad") {
 								echo '<p class="uppercase bold medium-font no-margin">'.$rows[$i]['menu_item'].'....'.$rows[$i]['price'].'</p>';
 								echo '<p class="smaller-font">'.$rows[$i]['description'].'</p>';
 							}
@@ -601,9 +660,9 @@ get_header(); ?>
 								if($rows[$i]['menu_item_type'] == "Mezes") {
 									$rows2[$j]["id"] = $rows[$i]["id"];
 									$rows2[$j]["description"] = $rows[$i]["description"];
-									$rows2[$j]["menu_item"] = $rows[$i]["menu_item"];
-									$rows2[$j]["menu_item_tyoe"] = $rows[$i]["menu_item_tyoe"];
 									$rows2[$j]["price"] = $rows[$i]["price"];
+									$rows2[$j]["menu_item"] = $rows[$i]["menu_item"];
+									$rows2[$j]["menu_item_type"] = $rows[$i]["menu_item_type"];
 									
 									$j++;
 								}
@@ -612,7 +671,7 @@ get_header(); ?>
 							reset($rows2);
 						
 						
-							for ($i = 0; $i < count($rows2)/2; ++$i) {					
+							for ($i = 0; $i < count($rows2)/3; ++$i) {					
 
 									echo '<p class="uppercase bold medium-font no-margin">'.$rows2[$i]['menu_item'].'....'.$rows2[$i]['price'].'</p>';
 									echo '<p class="smaller-font">'.$rows2[$i]['description'].'</p>';
@@ -625,7 +684,7 @@ get_header(); ?>
 					</div>
 					<div class="three-column">
 						<?php 
-							for ($i = $j; $i < count($rows2); ++$i) {				
+							for ($i = $j; $i < count($rows2)/3; ++$i) {				
 								echo '<p class="uppercase bold medium-font no-margin">'.$rows2[$i]['menu_item'].'....'.$rows2[$i]['price'].'</p>';
 								echo '<p class="smaller-font">'.$rows2[$i]['description'].'</p>';
 							}
@@ -634,29 +693,13 @@ get_header(); ?>
 						?>
 					</div>
 					<div class="three-column">
-						<h4 class="uppercase">Wines by the Glass<br />
-						Sommelier's Selection</h4>
-				
-						<p class="uppercase bold medium-font no-margin">White</p>
-						
 						<?php 
-							for ($i = 0; $i < count($rows); ++$i) {					
-								if($rows[$i]["wine_type"] == "White") {
-									echo '<p class="smaller-font no-margin">'.$rows[$i]['menu_item'].'....'.$rows[$i]['price'].'</p>';
-									echo '<p class="smaller-font">'.$rows[$i]['description'].'</p>';
-								}
+							for ($i = $j; $i < count($rows2)/3; ++$i) {		
+								echo '<p class="uppercase bold medium-font no-margin">'.$rows2[$i]['menu_item'].'....'.$rows2[$i]['price'].'</p>';
+								echo '<p class="smaller-font">'.$rows2[$i]['description'].'</p>';
 							}
-						?>
-						
-						<p class="uppercase bold medium-font no-margin">Red</p>
-						
-						<?php 
-							for ($i = 0; $i < count($rows); ++$i) {					
-								if($rows[$i]["wine_type"] == "Red") {
-									echo '<p class="smaller-font no-margin">'.$rows[$i]['menu_item'].'....'.$rows[$i]['price'].'</p>';
-									echo '<p class="smaller-font">'.$rows[$i]['description'].'</p>';
-								}
-							}
+							
+							reset($rows2);
 						?>
 					</div>
 				</div>
@@ -696,7 +739,7 @@ get_header(); ?>
 				</div>
 			
 				<div class="small-module-inside white-background">
-					<a href="<?php echo $base_url; ?>/wp-content/uploads/2014/06/dessert_menu.pdf"><img width="230" height="37" class="clear-both float-left margin-small-right" src="http://dev.pera.com/wp-content/themes/pera_soho/images/download-menu.png" alt="Download Menu"></a>
+					<a href="<?php echo $base_url; ?>/wp-content/uploads/2014/06/dinner_menu.pdf"><img width="230" height="37" class="clear-both float-left margin-small-right" src="http://dev.pera.com/wp-content/themes/pera_soho/images/download-menu.png" alt="Download Menu"></a>
 			
 					<a href="http://www.opentable.com/pera-soho-reservations-new-york?restref=76933"><img width="230" height="37" class="float-left" src="http://dev.pera.com/wp-content/themes/pera_soho/images/make-a-reservation.png" alt="Make a Reservation"></a>
 				</div>
@@ -714,8 +757,36 @@ get_header(); ?>
 		<div id="live-menu-happy-hour" class="full-module white-background live-menu"><!--HAPPY HOUR MENU-->
 			<div class="specials-module-inside">
 				<div class="three-column">
+					<h3 class="uppercase no-margin-bottom">Wines by the Glass</h3>
+					<h4 class="uppercase">Sommelier's Selection</h4>
+			
+					<p class="uppercase bold medium-font no-margin">White</p>
+					
+					<?php 
+						for ($i = 0; $i < count($rows); ++$i) {					
+							//if($rows[$i]["wine_type"] == "White") {
+							if($rows[$i]["menu_item_type"] == "Wine") {
+								echo '<p class="smaller-font no-margin">'.$rows[$i]['menu_item'].'....'.$rows[$i]['price'].'</p>';
+								echo '<p class="smaller-font">'.$rows[$i]['description'].'</p>';
+							}
+						}
+					?>
+					
+					<p class="uppercase bold medium-font no-margin">Red</p>
+					
+					<?php 
+						for ($i = 0; $i < count($rows); ++$i) {					
+							//if($rows[$i]["wine_type"] == "Red") {
+							if($rows[$i]["menu_item_type"] == "Wine") {
+								echo '<p class="smaller-font no-margin">'.$rows[$i]['menu_item'].'....'.$rows[$i]['price'].'</p>';
+								echo '<p class="smaller-font">'.$rows[$i]['description'].'</p>';
+							}
+						}
+					?>
+				</div>
+				<div class="three-column">
 					<h3 class="uppercase">Dips & Chips</h3>
-				
+					
 					<?php
 						for ($i = 0; $i < count($rows); ++$i) {
 							if($rows[$i]["menu_item_type"] == "Dips and Chips") {
@@ -724,13 +795,12 @@ get_header(); ?>
 							}
 						}
 					?>
-				</div>
-				<div class="three-column">
-					<h3 class="uppercase">Oven</h3>
+					
+					<h3 class="uppercase">Salad</h3>
 				
 					<?php 
 						for ($i = 0; $i < count($rows); ++$i) {	
-							if($rows[$i]["menu_item_type"] == "Oven") {
+							if($rows[$i]["menu_item_type"] == "Salad") {
 								echo '<p class="uppercase bold medium-font no-margin">'.$rows[$i]['menu_item'].'....'.$rows[$i]['price'].'</p>';
 								echo '<p class="smaller-font">'.$rows[$i]['description'].'</p>';
 							}
@@ -761,9 +831,9 @@ get_header(); ?>
 								if($rows[$i]['menu_item_type'] == "Mezes") {
 									$rows2[$j]["id"] = $rows[$i]["id"];
 									$rows2[$j]["description"] = $rows[$i]["description"];
-									$rows2[$j]["menu_item"] = $rows[$i]["menu_item"];
-									$rows2[$j]["menu_item_tyoe"] = $rows[$i]["menu_item_tyoe"];
 									$rows2[$j]["price"] = $rows[$i]["price"];
+									$rows2[$j]["menu_item"] = $rows[$i]["menu_item"];
+									$rows2[$j]["menu_item_type"] = $rows[$i]["menu_item_type"];
 									
 									$j++;
 								}
@@ -772,7 +842,7 @@ get_header(); ?>
 							reset($rows2);
 						
 						
-							for ($i = 0; $i < count($rows2)/2; ++$i) {					
+							for ($i = 0; $i < count($rows2)/3; ++$i) {					
 
 									echo '<p class="uppercase bold medium-font no-margin">'.$rows2[$i]['menu_item'].'....'.$rows2[$i]['price'].'</p>';
 									echo '<p class="smaller-font">'.$rows2[$i]['description'].'</p>';
@@ -785,7 +855,7 @@ get_header(); ?>
 					</div>
 					<div class="three-column">
 						<?php 
-							for ($i = $j; $i < count($rows2); ++$i) {				
+							for ($i = $j; $i < count($rows2)/3; ++$i) {				
 								echo '<p class="uppercase bold medium-font no-margin">'.$rows2[$i]['menu_item'].'....'.$rows2[$i]['price'].'</p>';
 								echo '<p class="smaller-font">'.$rows2[$i]['description'].'</p>';
 							}
@@ -794,29 +864,13 @@ get_header(); ?>
 						?>
 					</div>
 					<div class="three-column">
-						<h4 class="uppercase">Wines by the Glass<br />
-						Sommelier's Selection</h4>
-				
-						<p class="uppercase bold medium-font no-margin">White</p>
-						
 						<?php 
-							for ($i = 0; $i < count($rows); ++$i) {					
-								if($rows[$i]["wine_type"] == "White") {
-									echo '<p class="smaller-font no-margin">'.$rows[$i]['menu_item'].'....'.$rows[$i]['price'].'</p>';
-									echo '<p class="smaller-font">'.$rows[$i]['description'].'</p>';
-								}
+							for ($i = $j; $i < count($rows2)/3; ++$i) {		
+								echo '<p class="uppercase bold medium-font no-margin">'.$rows2[$i]['menu_item'].'....'.$rows2[$i]['price'].'</p>';
+								echo '<p class="smaller-font">'.$rows2[$i]['description'].'</p>';
 							}
-						?>
-						
-						<p class="uppercase bold medium-font no-margin">Red</p>
-						
-						<?php 
-							for ($i = 0; $i < count($rows); ++$i) {					
-								if($rows[$i]["wine_type"] == "Red") {
-									echo '<p class="smaller-font no-margin">'.$rows[$i]['menu_item'].'....'.$rows[$i]['price'].'</p>';
-									echo '<p class="smaller-font">'.$rows[$i]['description'].'</p>';
-								}
-							}
+							
+							reset($rows2);
 						?>
 					</div>
 				</div>
@@ -856,7 +910,7 @@ get_header(); ?>
 				</div>
 			
 				<div class="small-module-inside white-background">
-					<a href="<?php echo $base_url; ?>/wp-content/uploads/2014/06/happy_hour_menu.pdf"><img width="230" height="37" class="clear-both float-left margin-small-right" src="http://dev.pera.com/wp-content/themes/pera_soho/images/download-menu.png" alt="Download Menu"></a>
+					<a href="<?php echo $base_url; ?>/wp-content/uploads/2014/06/dinner_menu.pdf"><img width="230" height="37" class="clear-both float-left margin-small-right" src="http://dev.pera.com/wp-content/themes/pera_soho/images/download-menu.png" alt="Download Menu"></a>
 			
 					<a href="http://www.opentable.com/pera-soho-reservations-new-york?restref=76933"><img width="230" height="37" class="float-left" src="http://dev.pera.com/wp-content/themes/pera_soho/images/make-a-reservation.png" alt="Make a Reservation"></a>
 				</div>
@@ -871,11 +925,39 @@ get_header(); ?>
 			}
 		?>
 		
-		<div id="live-menu-rooftop" class="full-module white-background live-menu"><!--ROOFTOP MENU-->
+		<div id="live-menu-skydeck" class="full-module white-background live-menu"><!--SKYDECK MENU-->
 			<div class="specials-module-inside">
 				<div class="three-column">
+					<h3 class="uppercase no-margin-bottom">Wines by the Glass</h3>
+					<h4 class="uppercase">Sommelier's Selection</h4>
+			
+					<p class="uppercase bold medium-font no-margin">White</p>
+					
+					<?php 
+						for ($i = 0; $i < count($rows); ++$i) {					
+							//if($rows[$i]["wine_type"] == "White") {
+							if($rows[$i]["menu_item_type"] == "Wine") {
+								echo '<p class="smaller-font no-margin">'.$rows[$i]['menu_item'].'....'.$rows[$i]['price'].'</p>';
+								echo '<p class="smaller-font">'.$rows[$i]['description'].'</p>';
+							}
+						}
+					?>
+					
+					<p class="uppercase bold medium-font no-margin">Red</p>
+					
+					<?php 
+						for ($i = 0; $i < count($rows); ++$i) {					
+							//if($rows[$i]["wine_type"] == "Red") {
+							if($rows[$i]["menu_item_type"] == "Wine") {
+								echo '<p class="smaller-font no-margin">'.$rows[$i]['menu_item'].'....'.$rows[$i]['price'].'</p>';
+								echo '<p class="smaller-font">'.$rows[$i]['description'].'</p>';
+							}
+						}
+					?>
+				</div>
+				<div class="three-column">
 					<h3 class="uppercase">Dips & Chips</h3>
-				
+					
 					<?php
 						for ($i = 0; $i < count($rows); ++$i) {
 							if($rows[$i]["menu_item_type"] == "Dips and Chips") {
@@ -884,13 +966,12 @@ get_header(); ?>
 							}
 						}
 					?>
-				</div>
-				<div class="three-column">
-					<h3 class="uppercase">Oven</h3>
+					
+					<h3 class="uppercase">Salads</h3>
 				
 					<?php 
 						for ($i = 0; $i < count($rows); ++$i) {	
-							if($rows[$i]["menu_item_type"] == "Oven") {
+							if($rows[$i]["menu_item_type"] == "Salads") {
 								echo '<p class="uppercase bold medium-font no-margin">'.$rows[$i]['menu_item'].'....'.$rows[$i]['price'].'</p>';
 								echo '<p class="smaller-font">'.$rows[$i]['description'].'</p>';
 							}
@@ -921,9 +1002,9 @@ get_header(); ?>
 								if($rows[$i]['menu_item_type'] == "Mezes") {
 									$rows2[$j]["id"] = $rows[$i]["id"];
 									$rows2[$j]["description"] = $rows[$i]["description"];
-									$rows2[$j]["menu_item"] = $rows[$i]["menu_item"];
-									$rows2[$j]["menu_item_tyoe"] = $rows[$i]["menu_item_tyoe"];
 									$rows2[$j]["price"] = $rows[$i]["price"];
+									$rows2[$j]["menu_item"] = $rows[$i]["menu_item"];
+									$rows2[$j]["menu_item_type"] = $rows[$i]["menu_item_type"];
 									
 									$j++;
 								}
@@ -932,7 +1013,7 @@ get_header(); ?>
 							reset($rows2);
 						
 						
-							for ($i = 0; $i < count($rows2)/2; ++$i) {					
+							for ($i = 0; $i < count($rows2)/3; ++$i) {					
 
 									echo '<p class="uppercase bold medium-font no-margin">'.$rows2[$i]['menu_item'].'....'.$rows2[$i]['price'].'</p>';
 									echo '<p class="smaller-font">'.$rows2[$i]['description'].'</p>';
@@ -945,7 +1026,7 @@ get_header(); ?>
 					</div>
 					<div class="three-column">
 						<?php 
-							for ($i = $j; $i < count($rows2); ++$i) {				
+							for ($i = $j; $i < count($rows2)/3; ++$i) {				
 								echo '<p class="uppercase bold medium-font no-margin">'.$rows2[$i]['menu_item'].'....'.$rows2[$i]['price'].'</p>';
 								echo '<p class="smaller-font">'.$rows2[$i]['description'].'</p>';
 							}
@@ -954,29 +1035,13 @@ get_header(); ?>
 						?>
 					</div>
 					<div class="three-column">
-						<h4 class="uppercase">Wines by the Glass<br />
-						Sommelier's Selection</h4>
-				
-						<p class="uppercase bold medium-font no-margin">White</p>
-						
 						<?php 
-							for ($i = 0; $i < count($rows); ++$i) {					
-								if($rows[$i]["wine_type"] == "White") {
-									echo '<p class="smaller-font no-margin">'.$rows[$i]['menu_item'].'....'.$rows[$i]['price'].'</p>';
-									echo '<p class="smaller-font">'.$rows[$i]['description'].'</p>';
-								}
+							for ($i = $j; $i < count($rows2)/3; ++$i) {		
+								echo '<p class="uppercase bold medium-font no-margin">'.$rows2[$i]['menu_item'].'....'.$rows2[$i]['price'].'</p>';
+								echo '<p class="smaller-font">'.$rows2[$i]['description'].'</p>';
 							}
-						?>
-						
-						<p class="uppercase bold medium-font no-margin">Red</p>
-						
-						<?php 
-							for ($i = 0; $i < count($rows); ++$i) {					
-								if($rows[$i]["wine_type"] == "Red") {
-									echo '<p class="smaller-font no-margin">'.$rows[$i]['menu_item'].'....'.$rows[$i]['price'].'</p>';
-									echo '<p class="smaller-font">'.$rows[$i]['description'].'</p>';
-								}
-							}
+							
+							reset($rows2);
 						?>
 					</div>
 				</div>
@@ -1016,7 +1081,7 @@ get_header(); ?>
 				</div>
 			
 				<div class="small-module-inside white-background">
-					<a href="<?php echo $base_url; ?>/wp-content/uploads/2014/06/rootop_menu.pdf"><img width="230" height="37" class="clear-both float-left margin-small-right" src="http://dev.pera.com/wp-content/themes/pera_soho/images/download-menu.png" alt="Download Menu"></a>
+					<a href="<?php echo $base_url; ?>/wp-content/uploads/2014/06/dinner_menu.pdf"><img width="230" height="37" class="clear-both float-left margin-small-right" src="http://dev.pera.com/wp-content/themes/pera_soho/images/download-menu.png" alt="Download Menu"></a>
 			
 					<a href="http://www.opentable.com/pera-soho-reservations-new-york?restref=76933"><img width="230" height="37" class="float-left" src="http://dev.pera.com/wp-content/themes/pera_soho/images/make-a-reservation.png" alt="Make a Reservation"></a>
 				</div>

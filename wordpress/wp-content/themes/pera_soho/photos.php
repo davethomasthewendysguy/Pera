@@ -20,7 +20,7 @@ get_header(); ?>
 		<div class="full-module-inside">
 			<h3 class="uppercase center"><?php the_title(); ?></h3>
 			
-			<p class="center">Vel hac eu integer mattis natoque et? Elementum, aenean sed, proin augue ultrices dolor facilisis massa? Phasellus sed, magna a sagittis! Cum augue arcu elementum platea tincidunt facilisis et enim, vut est pellentesque nisi, vut? Ridiculus augue parturient dis elementum. Aliquam, mattis habitasse vut porta ultricies, quis turpis, diam.</p>
+			<!--<p class="center">Vel hac eu integer mattis natoque et? Elementum, aenean sed, proin augue ultrices dolor facilisis massa? Phasellus sed, magna a sagittis! Cum augue arcu elementum platea tincidunt facilisis et enim, vut est pellentesque nisi, vut? Ridiculus augue parturient dis elementum. Aliquam, mattis habitasse vut porta ultricies, quis turpis, diam.</p>-->
 		</div>
 	</div>
 	

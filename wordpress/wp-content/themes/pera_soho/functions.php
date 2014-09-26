@@ -43,6 +43,7 @@ function pera_soho_setup() {
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus( array(
 		'primary' => __( 'Primary Menu', 'pera_soho' ),
+		'secondary' => __( 'Secondary Menu (Not Homepage)', 'pera_soho' ),
 		'food' => __( 'Food Menu', 'pera_soho' ),
 	) );
 
@@ -97,7 +98,7 @@ function pera_soho_scripts() {
 	
 	wp_enqueue_script( 'pera_custom', get_template_directory_uri() . '/js/pera.js', array(), '20140513', true );
 	
-	wp_enqueue_script( 'tipr', get_template_directory_uri() . '/js/tipr.js', array(), '20140711', true );
+	//wp_enqueue_script( 'tipr', get_template_directory_uri() . '/js/tipr.js', array(), '20140711', true );
 	
 	wp_enqueue_script( 'tipr', 'http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js', array(), '20140711', true );
 	

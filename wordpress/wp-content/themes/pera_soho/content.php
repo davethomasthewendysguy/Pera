@@ -60,24 +60,19 @@
 				//echo get_ssb();
 			?>
 		</div><!-- .entry-content -->
-		<div class="full-module white-background"><!--SEPARATOR IMAGE-->
-			<div class="separator-inside-bottom">
-				<img src="<?php echo $bloginfo ;?>separator.png" alt="Separator" />
-			</div>
-		</div>
 	<?php endif; ?>
 
 	<footer class="entry-footer">
 		<?php if ( 'post' == get_post_type() ) : // Hide category and tag text for pages on Search ?>
 			<?php
 				/* translators: used between list items, there is a space after the comma */
-				$categories_list = get_the_category_list( __( ', ', 'pera_soho' ) );
-				if ( $categories_list && pera_soho_categorized_blog() ) :
+				//$categories_list = get_the_category_list( __( ', ', 'pera_soho' ) );
+				//if ( $categories_list && pera_soho_categorized_blog() ) :
 			?>
-			<span class="cat-links">
-				<?php printf( __( 'Posted in %1$s', 'pera_soho' ), $categories_list ); ?>
-			</span>
-			<?php endif; // End if categories ?>
+			<!--<span class="cat-links">
+				<?php //printf( __( 'Posted in %1$s', 'pera_soho' ), $categories_list ); ?>
+			</span>-->
+			<?php //endif; // End if categories ?>
 
 			<?php
 				/* translators: used between list items, there is a space after the comma */
@@ -96,4 +91,10 @@
 
 		<?php //edit_post_link( __( 'Edit', 'pera_soho' ), '<span class="edit-link">', '</span>' ); ?>
 	</footer><!-- .entry-footer -->
+	
+	<div class="full-module white-background"><!--SEPARATOR IMAGE-->
+		<div class="separator-inside-bottom">
+			<img src="<?php echo $bloginfo ;?>separator.png" alt="Separator" />
+		</div>
+	</div>
 </article><!-- #post-## -->

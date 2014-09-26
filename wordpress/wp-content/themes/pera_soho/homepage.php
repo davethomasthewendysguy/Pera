@@ -71,7 +71,11 @@ get_header(); ?>
 		<div class="full-module-inside">
 			<h3 class="uppercase center">About</h3>
 	
-			<p class="center">Our signature mezes and entree dishes that are so popular with New Yorkers made the trip with us when we opened another Pera in Soho. But we took our customers off the beaten path into parts of Eastern Mediterranean cuisine that rarely make it across the Atlantic. Like only the best restaurants in New York, we challenge your taste buds with incredible creations, such as Pistachio Crusted Snapper and Marinated Sliced Sirloin Steak “Shaslik.</p>
+			<div class="center-copy">
+				<?php while(have_posts()) : the_post(); ?>
+					<?php the_content(); ?>
+				<?php endwhile; // end of the loop. ?>
+			</div>
 		</div>
 	</div>
 	

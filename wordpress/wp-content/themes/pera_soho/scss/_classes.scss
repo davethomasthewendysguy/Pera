@@ -171,7 +171,7 @@
 	opacity: 0;
 	@include transition(opacity 1s ease-in-out);
 	overflow: hidden;
-	z-index: 9000;
+	z-index: 9997;
 	
 	@include between($desktop, $tablet-portrait) {
 		height: 124px;
@@ -180,6 +180,10 @@
 	@include smaller-than($tablet-portrait) {
 		height: 40px;
 	}
+}
+
+.home.fixed-menu {
+	z-index: 1;
 }
 
 .fixed-background {
@@ -304,6 +308,79 @@
 		@include between($phone-landscape, $phone-portrait) {
 			width: 100%;
 		}
+	}
+}
+
+.info-box-medium {
+	float: left;
+	position: relative;
+	margin: 0;
+	padding: 5px;
+	width: 506px;
+	min-height: 228px;
+	color: #231f20;
+	border: 1px solid #5a5655;
+	
+	@include between($desktop, $tablet-portrait) {
+		float: none;
+		margin: 0 auto 20px auto;
+		width: 376px;
+	}
+	
+	@include between($tablet-portrait, $phone-landscape) {
+		float: none;
+		margin: 0 auto 20px auto;
+		width: 440px;
+	}
+	
+	@include between($phone-landscape, $phone-portrait) {
+		float: none;
+		margin: 0 auto 20px auto;
+		width: 280px;
+	}
+	
+	p {
+		margin: 0 20px 10px 20px;
+	}
+	
+	p + ul {
+		margin-top: 10px;
+	}
+	
+	ul {
+		margin-bottom: 10px;
+	}
+	
+	li {
+		padding-right: 20px;
+		font-size: 14px;
+		list-style-type: none;
+
+		&:before {
+			display: block;
+			position: relative;
+			width: 0;
+			height: 0;
+			top: 15px;
+			left: -20px;
+			border-color: transparent #b22028;
+			border-style: solid;
+			border-width: 0.35em 0 0.35em 0.45em;
+			content: "";
+		}
+	}
+}
+
+.event-slider-container {
+	float: left;
+	width: 390px;
+	
+	@include between($desktop, $tablet-portrait) {
+		width: 300px;
+	}
+	
+	@include smaller-than($tablet-portrait) {
+		width: 100%;
 	}
 }
 
@@ -491,6 +568,22 @@
 	}
 }
 
+.max-width-428 {
+	max-width: 493px;
+	
+	@include between($desktop, $tablet-portrait) {
+		max-width: 363px;
+	}
+	
+	@include between($tablet-portrait, $phone-landscape) {
+		max-width: 428px;
+	}
+	
+	@include smaller-than($phone-landscape) {
+		max-width: 268px;
+	}
+}
+
 .white-background {
 	background: $offwhite;
 }
@@ -559,6 +652,10 @@
 		margin: 0;
 		width: 100%;
 	}
+}
+
+.center-copy p {
+	text-align: center;
 }
 
 .modal-hide {

@@ -21,7 +21,7 @@
 
 
 <script>
-	(function($) {
+	/*(function($) {
 		$(document).ready(function() {
 			$( "#toolbar_hupso_toolbar_0 a" ).each(function(index) {
   				$('#toolbar_hupso_toolbar_0 a').addClass("tip");
@@ -37,7 +37,7 @@
 			$('.tip2').tipr();
 			$('.tip3').tipr();
 		});
-	})(jQuery);
+	})(jQuery); */
 </script>
 
 </body>
