@@ -1,0 +1,223 @@
+.cgm-about-wrap .wp-cgm-badge {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.wp-cgm-badge {
+    color: #FFFFFF;
+    text-shadow: 0 -1px 0 rgba(22, 57, 81, 0.3);
+}
+
+.wp-cgm-badge {
+    background: url("../images/getstarted/toplogo.png") no-repeat scroll 0 0 transparent;
+    font-size: 14px;
+    font-weight: bold;
+    height: 60px;
+    margin: 0 -5px;
+    padding-top: 142px;
+    text-align: center;
+    width: 188px;
+}
+
+.cgm-about-wrap {
+    font-size: 15px;
+    margin: 25px 40px 0 20px;
+    max-width: 1050px;
+    min-width: 770px;
+    position: relative;
+}
+
+.cgm-about-wrap h3 {
+    color: #333333;
+    text-shadow: 1px 1px 1px white;
+}
+.cgm-about-wrap h3 {
+    font-size: 24px;
+    margin-bottom: 1em;
+    padding-top: 20px;
+}
+
+.cgm-about-wrap .feature-section.three-col h4 {
+    margin: 0 0 0.6em;
+}
+
+.cgm-about-wrap .feature-section h4 {
+    color: #464646;
+}
+
+.cgm-about-wrap .feature-section h4 {
+    margin-bottom: 0.6em;
+}
+
+.cgm-about-wrap .feature-section.three-col div {
+    float: left;
+    margin-right: 5%;
+    width: 30%;
+}
+
+.cgm-about-wrap h1 {
+    color: #333333;
+    text-shadow: 1px 1px 1px white;
+}
+
+.cgm-about-wrap h1 {
+    font-size: 2.8em;
+    font-weight: 200;
+    line-height: 1.2em;
+    margin: 0.2em 200px 0 0;
+}
+
+.cgm-about-wrap .changelog li {
+    list-style-type: disc;
+    margin-left: 3em;
+}
+
+
+.cgm-about-wrap .feature-section.text-features {
+    float: left;
+    overflow: visible;
+    width: 31%;
+}
+
+.cgm-about-wrap .feature-section .angled-right h4, .cgm-about-wrap .feature-section .angled-left h4 {
+    margin-top: 0;
+}
+
+.cgm-about-wrap .feature-section.screenshot-features {
+    clear: none;
+    float: right;
+    margin-top: 1.33em;
+    overflow: visible;
+    width: 67%;
+}
+
+.cgm-about-wrap .feature-section.screenshot-features .angled-right {
+    margin-left: 2.5em;
+    margin-top: -1em;
+}
+
+.cgm-about-text {
+    color: #777777;
+}
+
+.cgm-about-text {
+    font-size: 24px;
+    margin: 1em 200px 1.4em 0;
+    min-height: 60px;
+}
+
+.cgm-about-text, .cgm-about-description, .cgm-about-wrap li.wp-person a.web {
+    font-family: "HelveticaNeue-Light","Helvetica Neue Light","Helvetica Neue",sans-serif;
+    font-size: 24px;
+    font-weight: normal;
+    line-height: 1.6em;
+}
+
+.cgm-about-wrap .feature-section .angled-right img, .cgm-about-wrap .feature-section .angled-left img {
+    margin-right: 30px;
+    margin-top: 0.1em;
+}
+
+.cgm-about-wrap .wp-badge {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.cgm-about-wrap .changelog {
+    overflow: hidden;
+    padding-bottom: 10px;
+}
+
+.cgm-about-wrap .feature-section.images-stagger-left, .cgm-about-wrap .feature-section.images-stagger-right {
+    min-height: 265px;
+}
+
+.cgm-about-wrap .feature-section {
+    clear: both;
+    min-height: 100px;
+    overflow: hidden;
+}
+
+.cgm-about-wrap .feature-section.three-col {
+    margin-bottom: 0;
+    padding-top: 15px;
+}
+
+.cgm-about-wrap .feature-section.images-stagger-right .feature-images {
+    right: 0;
+}
+
+.cgm-about-wrap .feature-section .feature-images {
+    margin-top: 1.1em;
+    position: absolute;
+    width: 300px;
+}
+
+.cgm-about-wrap .feature-section.images-stagger-right .angled-right, .cgm-about-wrap .feature-section.images-stagger-left .angled-left {
+    margin-bottom: -30px;
+}
+
+.cgm-about-wrap .feature-section .feature-images img {
+    height: 210px;
+    margin-right: 5px;
+    width: 265px;
+}
+
+.cgm-about-wrap .feature-section .angled-right {
+    float: right;
+}
+
+.cgm-about-wrap .feature-section img {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border-color: #DFDFDF;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+.cgm-about-wrap .feature-section img {
+    border: medium none;
+    border-radius: 3px 3px 3px 3px;
+    margin: 5px auto;
+}
+
+.cgm-about-wrap .feature-section .left-feature, .cgm-about-wrap .feature-section img, .cgm-about-wrap .feature-section .right-feature {
+    float: left;
+}
+
+.cgm-about-wrap .feature-section.images-stagger-right .left-feature {
+    margin-right: 350px;
+}
+
+.cgm-about-wrap .feature-section.three-col img {
+    float: none;
+    margin: 0.5em 0 0.5em 5px;
+    max-width: 100%;
+}
+
+.cgm-about-wrap .feature-section p {
+    margin-top: 0.6em;
+}
+
+.cgm-about-wrap p {
+    line-height: 1.6em;
+}
+
+.cgm-about-wrap .feature-section.three-col .last-feature {
+    margin-right: 0;
+}
+
+.cgm-about-wrap code {
+    font-size: 14px;
+}
+
+.cgm-about-wrap .return-to-dashboard {
+    font-size: 14px;
+    font-weight: bold;
+    margin: 30px 0 0 -5px;
+}
+
+.cgm-about-wrap .return-to-dashboard a {
+    padding: 0 5px;
+    text-decoration: none;
+}

@@ -8,3 +8,14 @@
     font-weight: bold;
     font-style: normal;
 }
+
+@font-face {
+    font-family: 'avenir-bold';
+    src: url('fonts/avenir-bold.eot');
+    src: url('fonts/avenir-bold.eot?#iefix') format('embedded-opentype'),
+         url('fonts/avenir-bold.woff') format('woff'),
+         url('fonts/avenir-bold.ttf') format('truetype'),
+         url('fonts/avenir-bold') format('svg');
+    font-weight: 700;
+    font-style: normal;
+}

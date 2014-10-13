@@ -1,0 +1,79 @@
+.home,
+.not-home{
+
+	
+
+	#main{
+
+		.post-listing.jazz_post{
+
+			.post-container{
+				border-bottom:1px solid #aaaaaa;
+				margin-bottom:30px;
+			}
+
+			.post-date{
+				width: 94px;
+				margin-right:-100px;
+				margin-top:3px;
+
+
+				span{
+					font-size:18px;
+					float:left;
+
+					&.year{
+						float:right;
+					}
+
+					&.day{
+						margin-right:1px;
+					}
+				}
+
+				&:after{
+					clear:both;
+					display: block;
+					content: " ";
+				}
+			}
+
+			.post-content{
+				padding-left:100px;
+				width: 100%;
+				margin-bottom: 10px;
+
+				&:after{
+					clear:both;
+					content:" ";
+					display: block;
+				}
+
+				.post-content-title{
+					font-size:34px;
+					font-family: $avenir-black;
+					color:#000;
+					float:left;
+					margin-right:10px;
+					line-height: 1;
+					margin-bottom:0;
+				}
+
+				.post-description{
+					padding-top:12px;
+					margin:0;
+					text-align:left;
+
+					a,
+					a:link{
+						color:#ff6666;
+
+						&:hover{
+							color:#ff0000;
+						}
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,24 @@
+/* line 12, sass/_jazz.scss */
+.home #main .post-listing.jazz_post .post-container, .not-home #main .post-listing.jazz_post .post-container, body.not-home.not-landing #main .post-listing.jazz_post .post-container { border-bottom: 1px solid #aaaaaa; margin-bottom: 30px; }
+/* line 17, sass/_jazz.scss */
+.home #main .post-listing.jazz_post .post-date, .not-home #main .post-listing.jazz_post .post-date, body.not-home.not-landing #main .post-listing.jazz_post .post-date { min-width: 96px; margin-right: -100px; margin-top: 3px; }
+/* line 23, sass/_jazz.scss */
+.home #main .post-listing.jazz_post .post-date span, .not-home #main .post-listing.jazz_post .post-date span, body.not-home.not-landing #main .post-listing.jazz_post .post-date span { font-size: 18px !important; float: left; }
+/* line 27, sass/_jazz.scss */
+.home #main .post-listing.jazz_post .post-date span.year, .not-home #main .post-listing.jazz_post .post-date span.year, body.not-home.not-landing #main .post-listing.jazz_post .post-date span.year { float: right; }
+/* line 31, sass/_jazz.scss */
+.home #main .post-listing.jazz_post .post-date span.day, .not-home #main .post-listing.jazz_post .post-date span.day, body.not-home.not-landing #main .post-listing.jazz_post .post-date span.day { margin-right: 1px; }
+/* line 36, sass/_jazz.scss */
+.home #main .post-listing.jazz_post .post-date:after, .not-home #main .post-listing.jazz_post .post-date:after, body.not-home.not-landing #main .post-listing.jazz_post .post-date:after { clear: both; display: block; content: " "; }
+/* line 43, sass/_jazz.scss */
+.home #main .post-listing.jazz_post .post-content, .not-home #main .post-listing.jazz_post .post-content, body.not-home.not-landing #main .post-listing.jazz_post .post-content { padding-left: 100px; width: 100%; margin-bottom: 10px; }
+/* line 48, sass/_jazz.scss */
+.home #main .post-listing.jazz_post .post-content:after, .not-home #main .post-listing.jazz_post .post-content:after, body.not-home.not-landing #main .post-listing.jazz_post .post-content:after { clear: both; content: " "; display: block; }
+/* line 54, sass/_jazz.scss */
+.home #main .post-listing.jazz_post .post-content .post-content-title, .not-home #main .post-listing.jazz_post .post-content .post-content-title, body.not-home.not-landing #main .post-listing.jazz_post .post-content .post-content-title { font-size: 34px !important; font-family: "AvenirLT-Black", "Open Sans", sans-serif; color: #000; float: left; margin-right: 10px; line-height: 1; margin-bottom: 0; }
+/* line 64, sass/_jazz.scss */
+.home #main .post-listing.jazz_post .post-content .post-description, .not-home #main .post-listing.jazz_post .post-content .post-description, body.not-home.not-landing #main .post-listing.jazz_post .post-content .post-description { padding-top: 12px; margin: 0; text-align: left; }
+/* line 70, sass/_jazz.scss */
+.home #main .post-listing.jazz_post .post-content .post-description a, .home #main .post-listing.jazz_post .post-content .post-description a:link, .not-home #main .post-listing.jazz_post .post-content .post-description a, .not-home #main .post-listing.jazz_post .post-content .post-description a:link, body.not-home.not-landing #main .post-listing.jazz_post .post-content .post-description a, body.not-home.not-landing #main .post-listing.jazz_post .post-content .post-description a:link { color: #ff6666; }
+/* line 73, sass/_jazz.scss */
+.home #main .post-listing.jazz_post .post-content .post-description a:hover, .home #main .post-listing.jazz_post .post-content .post-description a:link:hover, .not-home #main .post-listing.jazz_post .post-content .post-description a:hover, .not-home #main .post-listing.jazz_post .post-content .post-description a:link:hover, body.not-home.not-landing #main .post-listing.jazz_post .post-content .post-description a:hover, body.not-home.not-landing #main .post-listing.jazz_post .post-content .post-description a:link:hover { color: #ff0000; }

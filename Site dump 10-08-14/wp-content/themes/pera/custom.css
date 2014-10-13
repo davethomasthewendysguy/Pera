@@ -1,0 +1,29 @@
+/* 
+WOO CUSTOM STYLESHEET
+---------------------
+
+Instructions:
+
+Add your custom styles at the end of this file instead 
+of style.css so it is easier to update the theme. 
+Simply copy an existing style from style.css to this file, 
+and modify it to your liking.
+*/
+
+.alignleft {
+  float: left;
+  margin: 5px 15px 15px 0;
+}
+.alignright {
+  float: right;
+  margin: 5px 0 15px 15px;
+}
+.aligncenter {
+  text-align: center;
+  margin-bottom: 15px;
+}
+img.aligncenter {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}

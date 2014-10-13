@@ -1,0 +1,140 @@
+.lt-ie9 {
+	.col-full {
+		max-width: 100% !important;
+		min-width: 0 !important;
+		width: 100% !important;
+	}
+
+	#wrapper {
+		width: 100% !important;
+	}
+
+	body.not-landing {
+		#navigation {
+			width: auto;
+
+			ul {
+				padding:0;
+			}
+		}
+
+		.home,
+		.not-home {
+			#main {
+				.post-listing {
+					.post-content {
+						.post-thumbnail {
+							img{
+								width: 100%;
+							}
+						}
+					}
+				}
+			}
+
+
+		}
+
+		.copyright-container input[type="text"], .copyright-container input[type="password"], .copyright-container input[type="email"], .copyright-container label{
+			padding-top:10px;
+		}
+
+		.post-listing {
+			.post-content {
+				float: none !important;
+			}
+
+			.post-thumbnail {
+				width: 150px !important;
+				height: 150px !important;
+			}
+		}		
+	}
+
+	body.not-home.not-landing {
+		#main {
+			.special-offer {
+				a {
+					display: inline-block;
+					width: 50%;
+					float: none;
+					margin: 0 !important;
+
+					img {
+						width: 100%;
+						max-width: 100%;
+						float: none;
+					}
+				}
+			}
+		}	
+	}
+
+	body.page.landing {
+		.animated.offers {
+			ul {
+				width: 1023px;
+				max-width: 100% !important;	
+			}
+		}
+
+		.post-listing {
+			.post-content {
+				float: none !important;
+			}
+		}
+
+		.gf_browser_ie8 {
+			float: none !important;
+		}
+
+		#emailgroup {
+			float: none !important;
+			width: 305px !important;
+		}
+
+		.gform_body {
+			width: 200px !important;
+		}
+	}
+}
+
+@media only screen and (min-width: 768px) {
+	.lt-ie9 {
+		body.landing.page {
+			#credit {
+				margin-top: -23px;
+			}
+		}
+	}
+}
+
+@media only screen and (max-width: 768px) {
+	.lt-ie9 {
+		body.landing.page {
+			.wpb_row.vc_row-fluid.animated.banner {
+				.block_outer, img, ul, li, a {
+					width: 100% !important;
+					max-width: 100% !important;
+					display: block !important;
+					margin: 0 !important;
+					padding: 0 !important;
+					border: 0 !important;
+					height: auto !important;
+				}
+
+			}
+		}
+	}
+}
+
+@media only screen and (max-width: 630px) {
+	.lt-ie9 {
+		body.page.landing {
+			#emailgroup {
+				margin: 0 auto !important;
+				margin-bottom: 5px !important;
+			}
+		}
+	}
+}

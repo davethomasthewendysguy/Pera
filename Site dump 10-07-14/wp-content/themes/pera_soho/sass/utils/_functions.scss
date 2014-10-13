@@ -1,0 +1,19 @@
+@function set_column_width( $n: 1, $d: 0, $ie: false ){
+  @if $n == 1 {
+  	@return 100%;
+  } @else if $ie == true {
+    @return ( 100% / $n ) - $d - $ie-dimention-percentage-factor; 
+  } @else if $ie == false {
+    @return ( 100% / $n ) - $d;
+  }
+}
+
+@function set_column_gutter($n: 1, $d: 0, $ie: false ){
+  @if $n == 1 {
+  	@return 0%;
+  } @else if $ie == true {
+        @return ( $n / ( $n - 1 ) ) * $d - $ie-dimention-percentage-factor;  
+  } @else if $ie == false {
+        @return ( $n / ( $n - 1 ) ) * $d;  
+  }	
+}

@@ -1,4 +1,17 @@
 .blog {
+	.blog-container {
+		float: left;
+		width: 600px;
+		
+		@include smaller-than($tablet-portrait) {
+			width: 440px;
+		}
+		
+		@include smaller-than($phone-landscape) {
+			width: 280px;
+		}
+	}
+	
 	.entry-meta {
 		font-size: 12px;
 		text-align: left;
@@ -11,14 +24,70 @@
 	}
 	
 	article {
-		margin: 0 auto 0 auto;
-		width: 726px;
+		float: left;
+		width: 600px;
 		
 		@include smaller-than($tablet-portrait) {
+			width: 440px;
+			
+			h3 {
+				font-size: 24px;
+			}
+		}
+		
+		@include smaller-than($phone-landscape) {
+			width: 280px;
+			
+			h3 {
+				font-size: 24px;
+			}
+		}
+	}
+	
+	.navigation {
+		float: left;
+		width: 100%;
+		clear: both;
+	}
+	
+	.widget-area {
+		float: left;
+		margin: 0 0 0 40px;
+		width: 300px;
+		
+		@include smaller-than($desktop) {
+			width: 200px;
+		}
+		
+		@include smaller-than($tablet-portrait) {
+			display: none;
 			width: 440px;
 		}
 		
 		@include smaller-than($phone-landscape) {
+			display: none;
+			width: 280px;
+		}
+		
+		ul {
+			margin: 0;
+			list-style-type: none;
+			list-style-position: inside;
+		}
+	}
+	
+	.separator-inside-bottom {
+		margin: 60px auto 60px auto;
+		width: 600px;
+		overflow: auto;
+		
+		@include smaller-than($tablet-portrait) {
+			margin: 0 auto 60px auto;
+			width: 440px;
+		}
+		
+		@include smaller-than($phone-landscape) {
+			margin: 0 auto 60px auto;
 			width: 280px;
 		}
 	}
@@ -34,9 +103,30 @@
 			//color: #333333;
 		}
 	}
+	
+	a:link, a:visited, a:hover, a:active {
+		color: #333333;
+	}
+	
+	#contact a.link, #contact a.visited {
+		color: $gold;
+	}
 }
 
 .single {
+	.blog-container {
+		float: left;
+		width: 100%;
+		
+		@include smaller-than($tablet-portrait) {
+			width: 440px;
+		}
+		
+		@include smaller-than($phone-landscape) {
+			width: 280px;
+		}
+	}
+
 	.entry-meta {
 		font-size: 12px;
 		text-align: left;
@@ -49,8 +139,66 @@
 	}
 	
 	article {
-		margin: 0 auto 0 auto;
-		width: 726px;
+		float: left;
+		width: 100%;
+		
+		@include smaller-than($desktop) {
+			width: 100%;
+		}
+		
+		@include smaller-than($tablet-portrait) {
+			width: 440px;
+			
+			h3 {
+				font-size: 24px;
+			}
+		}
+		
+		@include smaller-than($phone-landscape) {
+			width: 280px;
+			
+			h3 {
+				font-size: 24px;
+			}
+		}
+	}
+	
+	.navigation {
+		float: left;
+		width: 100%;
+		clear: both;
+	}
+	
+	.widget-area {
+		float: left;
+		margin: 0 0 0 40px;
+		width: 300px;
+		
+		@include smaller-than($desktop) {
+			width: 200px;
+		}
+		
+		@include smaller-than($tablet-portrait) {
+			display: none;
+			width: 440px;
+		}
+		
+		@include smaller-than($phone-landscape) {
+			display: none;
+			width: 280px;
+		}
+		
+		ul {
+			margin: 0;
+			list-style-type: none;
+			list-style-position: inside;
+		}
+	}
+	
+	.separator-inside-bottom {
+		margin: 60px auto 60px auto;
+		width: 600px;
+		overflow: auto;
 		
 		@include smaller-than($tablet-portrait) {
 			width: 440px;
@@ -73,10 +221,10 @@
 		}
 	}
 	
-	.site-main {
+	/*.site-main {
 		.comment-navigation, .paging-navigation, .post-navigation {
 			margin: 0 auto 1.5em auto;
-			width: 726px;
+			width: 600px;
 			overflow: hidden;
 			
 			@include smaller-than($tablet-portrait) {
@@ -87,10 +235,41 @@
 				width: 280px;
 			}
 		}
-	}
+	} */
 	
 	footer.entry-footer {
 		clear: both;
 		overflow: auto;
 	}
+	
+	#contact a.link, #contact a.visited {
+		color: $gold;
+	}
+}
+
+.page {
+	#contact a.link, #contact a.visited {
+		color: $gold;
+	}
+}
+
+.page-template-blog-php {
+	a:link, a:visited, a:hover, a:active {
+		color: #333333;
+	}
+	
+	article {
+		a:link {
+			color: $gold;
+		}
+		
+		a:visited, a:hover, a:active {
+			color: $darkgold;
+		}
+	}
+}
+
+.archive h1.page-title, .category h1.page-title {
+	margin-bottom: 0;
+	text-shadow: 1px 1px 0 #ffffff, -1px -1px 0 #ffffff, -1px 1px 0 #ffffff, 1px -1px 0 #ffffff, -2px 2px 0px #d9c09e;
 }

@@ -68,7 +68,7 @@ get_header(); ?>
 	</div>
 	
 	<div class="full-module white-background"><!--ABOUT US-->
-		<div class="full-module-inside">
+		<div class="full-module-inside" style="padding-top:20px;"><!--PADDING TOP HACK TO MAKE ABOUT COPY VISIBLE WITHOUT SCROLLING-->
 			<h3 class="uppercase center">About</h3>
 	
 			<div class="center-copy">
@@ -89,14 +89,14 @@ get_header(); ?>
 			
 			<?php the_post(); ?>
 			
-			<div class="homepage-specials">
+			<div class="homepage-specials" style="overflow:auto;">
 				<?php
-					//Get 'featured' posts
+					//GET LATEST 2 SPECIALS
 					$news_posts = get_posts(array(
 						'post_type' => 'post',
-						'posts_per_page' => 3, // Unlimited posts
+						'posts_per_page' => 2, // Unlimited posts
 						'orderby' => 'date', // Order by date
-						'category' => 4
+						'category' => 91
 					)); 
 				?>
 				
@@ -104,7 +104,6 @@ get_header(); ?>
 					foreach ($news_posts as $post): 
 						setup_postdata($post);
 
-						// Resize and CDNize thumbnails using Automattic Photon service
 						$thumb_src = null;
 						if (has_post_thumbnail($post->ID)) {
 							$src = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'team-thumb' );
@@ -114,7 +113,7 @@ get_header(); ?>
 						
 						<article class="four-column">
 							<?php if ( $thumb_src ): ?>
-								<a href="<?php echo get_permalink(); ?>"><img width="140" height="140" src="<?php echo $thumb_src; ?>" alt="<?php the_title(); ?>"></a>
+								<a href="<?php echo get_permalink(); ?>"><img width="220" height="220" src="<?php echo $thumb_src; ?>" alt="<?php the_title(); ?>"></a>
 							<?php endif; ?>
 					
 							<h5 class="center uppercase"><?php the_title(); ?></h5>
@@ -128,12 +127,12 @@ get_header(); ?>
 				<?php wp_reset_query(); ?>				
 				
 				<?php
-					//Get latest post
+					//GET LATEST 2 POSTS
 					$news_posts = get_posts(array(
 						'post_type' => 'post',
-						'posts_per_page' => 1, // Unlimited posts
+						'posts_per_page' => 2, // Unlimited posts
 						'orderby' => 'date', // Order by date
-						'category' => -4
+						'category' => -91
 					)); 
 				?>
 				
@@ -141,7 +140,6 @@ get_header(); ?>
 					foreach ($news_posts as $post): 
 						setup_postdata($post);
 
-						// Resize and CDNize thumbnails using Automattic Photon service
 						$thumb_src = null;
 						if (has_post_thumbnail($post->ID)) {
 							$src = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'team-thumb' );
@@ -151,7 +149,7 @@ get_header(); ?>
 						
 						<article class="four-column">
 							<?php if ( $thumb_src ): ?>
-								<a href="<?php echo get_permalink(); ?>"><img width="140" height="140" src="<?php echo $thumb_src; ?>" alt="<?php the_title(); ?>"></a>
+								<a href="<?php echo get_permalink(); ?>"><img width="220" height="220" src="<?php echo $thumb_src; ?>" alt="<?php the_title(); ?>"></a>
 							<?php endif; ?>
 					
 							<h5 class="center uppercase"><?php the_title(); ?></h5>
@@ -178,11 +176,11 @@ get_header(); ?>
 			<h3 class="uppercase center">Menu</h3>
 			
 			<div class="info-box margin-medium-bottom">
-				<img src="<?php echo $bloginfo ;?>filigre-top.png" alt="Filigre border" />
+				<img style="width:100%;" src="<?php echo $bloginfo ;?>filigre-top.png" alt="Filigre border" />
 					<nav id="food-navigation" class="main-navigation" role="navigation">
 						<?php wp_nav_menu( array( 'theme_location' => 'food' ) ); ?>
 					</nav>
-				<img src="<?php echo $bloginfo ;?>filigre-bottom.png" alt="Filigre border" />
+				<img style="width:100%;" src="<?php echo $bloginfo ;?>filigre-bottom.png" alt="Filigre border" />
 			</div>
 		</div>
 	</div>
@@ -197,9 +195,9 @@ get_header(); ?>
 			
 			<div class="info-box-small">
 				<img class="full-width-image block" src="<?php echo $bloginfo ;?>filigre-top-small.png" alt="Filigre border" />
-				<p>Pera offers an array of on-premise and off-premise options ranging from formal to casual get togethers and whether it be a corporate event or a celebration with friends and family.<br />
+				<p class="center">World-renowned Mediterranean hospitality underscores our culture and our commitment to your special occasion at Pera SoHo.<br />
 				<br />
-				<a href="events/"><img class="center" src="<?php echo $bloginfo ;?>book-with-us.png" alt="Book with Us" /></a></p>
+				<a href="events/"><img class="center" src="<?php echo $bloginfo ;?>learn-more.png" alt="Book with Us" /></a></p>
 				<img class="full-width-image block absolute bottom-5px max-width-274" src="<?php echo $bloginfo ;?>filigre-bottom-small.png" alt="Filigre border" />
 			</div>
 			

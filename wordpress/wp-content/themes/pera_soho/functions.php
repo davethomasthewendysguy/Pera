@@ -5,6 +5,13 @@
  * @package pera_soho
  */
 
+
+
+@ini_set( 'upload_max_size' , '64M' );
+@ini_set( 'post_max_size', '64M');
+@ini_set( 'max_execution_time', '300' );
+
+
 /**
  * Set the content width based on the theme's design and stylesheet.
  */
@@ -96,11 +103,11 @@ function pera_soho_scripts() {
 
 	wp_enqueue_script( 'pera_soho-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20130115', true );
 	
-	wp_enqueue_script( 'pera_custom', get_template_directory_uri() . '/js/pera.js', array(), '20140513', true );
+	wp_enqueue_script( 'pera_custom', get_template_directory_uri() . '/js/pera.js', array(), '20141007', true );
 	
 	//wp_enqueue_script( 'tipr', get_template_directory_uri() . '/js/tipr.js', array(), '20140711', true );
 	
-	wp_enqueue_script( 'tipr', 'http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js', array(), '20140711', true );
+	//wp_enqueue_script( 'tipr', 'http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js', array(), '20140711', true );
 	
 	if(is_front_page()) {
 		wp_enqueue_script( 'supersized', get_template_directory_uri() . '/js/supersized.3.2.7.min.js', array(), '20140506', true );
@@ -152,7 +159,7 @@ add_theme_support( 'post-thumbnails' );
 /**
  * Register `Specials` post type
  */
-function special_post_type() {
+/*function special_post_type() {
    
    // Labels
 	$labels = array(	
@@ -180,7 +187,7 @@ function special_post_type() {
 		'supports' => array('title', 'editor', 'thumbnail')
 	) );
 }
-add_action( 'init', 'special_post_type', 0 );
+add_action( 'init', 'special_post_type', 0 );*/
 
 
 /**
@@ -237,11 +244,30 @@ function myplugin_add_meta_box() {
 add_action( 'add_meta_boxes', 'myplugin_add_meta_box' );
 
 /**
+ * Adds a box to the main column on the Event Rooms edit screens.
+ */
+function myplugin_add_meta_box2() {
+
+	$screens = array( 'events' );
+
+	foreach ( $screens as $screen ) {
+
+		add_meta_box(
+			'myplugin_page_position',
+			__( 'Page Position', 'myplugin_textdomain' ),
+			'myplugin_meta_box_callback2',
+			$screen
+		);
+	}
+}
+add_action( 'add_meta_boxes', 'myplugin_add_meta_box2' );
+
+/**
  * Prints the box content.
  * 
  * @param WP_Post $post The object for the current post/page.
  */
-function myplugin_meta_box_callback( $post ) {
+function myplugin_meta_box_callback($post) {
 
 	// Add an nonce field so we can check for it later.
 	wp_nonce_field( 'myplugin_meta_box', 'myplugin_meta_box_nonce' );
@@ -252,10 +278,27 @@ function myplugin_meta_box_callback( $post ) {
 	 */
 	$value = get_post_meta( $post->ID, 'rev_slider_id', true );
 
-	echo '<label for="myplugin_new_field">';
+	echo '<label for="rev_slider_id">';
 	_e( 'Enter the proper ID (number from the Rev Slider page)', 'myplugin_textdomain' );
 	echo '</label> ';
 	echo '<input type="text" id="rev_slider_id" name="rev_slider_id" value="' . esc_attr( $value ) . '" size="25" />';
+}
+
+function myplugin_meta_box_callback2($post) {
+
+	// Add an nonce field so we can check for it later.
+	wp_nonce_field( 'myplugin_meta_box2', 'myplugin_meta_box_nonce2' );
+
+	/*
+	 * Use get_post_meta() to retrieve an existing value
+	 * from the database and use the value for the form.
+	 */
+	$value = get_post_meta( $post->ID, 'page_position', true );
+
+	echo '<label for="page_position">';
+	_e( 'Enter the page position', 'myplugin_textdomain' );
+	echo '</label> ';
+	echo '<input type="text" id="page_position" name="page_position" value="' . esc_attr( $value ) . '" size="25" />';
 }
 
 /**
@@ -314,8 +357,61 @@ function myplugin_save_meta_box_data( $post_id ) {
 }
 add_action( 'save_post', 'myplugin_save_meta_box_data' );
 
+/**
+ * When the post is saved, saves our custom data.
+ *
+ * @param int $post_id The ID of the post being saved.
+ */
+function myplugin_save_meta_box_data2( $post_id ) {
 
+	/*
+	 * We need to verify this came from our screen and with proper authorization,
+	 * because the save_post action can be triggered at other times.
+	 */
 
+	// Check if our nonce is set.
+	if ( ! isset( $_POST['myplugin_meta_box_nonce2'] ) ) {
+		return;
+	}
+
+	// Verify that the nonce is valid.
+	if ( ! wp_verify_nonce( $_POST['myplugin_meta_box_nonce2'], 'myplugin_meta_box2' ) ) {
+		return;
+	}
+
+	// If this is an autosave, our form has not been submitted, so we don't want to do anything.
+	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+		return;
+	}
+
+	// Check the user's permissions.
+	if ( isset( $_POST['post_type'] ) && 'page' == $_POST['post_type'] ) {
+
+		if ( ! current_user_can( 'edit_page', $post_id ) ) {
+			return;
+		}
+
+	} else {
+
+		if ( ! current_user_can( 'edit_post', $post_id ) ) {
+			return;
+		}
+	}
+
+	/* OK, its safe for us to save the data now. */
+	
+	// Make sure that it is set.
+	if ( ! isset( $_POST['page_position'] ) ) {
+		return;
+	}
+
+	// Sanitize user input.
+	$my_data = sanitize_text_field( $_POST['page_position'] );
+
+	// Update the meta field in the database.
+	update_post_meta( $post_id, 'page_position', $my_data );
+}
+add_action( 'save_post', 'myplugin_save_meta_box_data2' );
 
 /**
  * Limit excerpts to 30 words
@@ -324,3 +420,9 @@ function custom_excerpt_length($length) {
 	return 30;
 }
 add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
+
+function new_excerpt_more($more) {
+    global $post;
+	return '<br /><a class="moretag" href="'. get_permalink($post->ID) . '">Read more...</a>';
+}
+add_filter('excerpt_more', 'new_excerpt_more');

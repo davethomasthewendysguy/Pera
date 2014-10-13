@@ -1,0 +1,117 @@
+.wpb_content_element .wpb_tour_tabs_wrapper .wpb_tabs_nav a, .wpb_content_element .wpb_accordion_header a {
+	border-bottom: none;
+	text-decoration: none;
+	display: block;
+	color: #715940 !important;
+	padding: 26px 47px 21px 47px !important;;
+	text-transform: uppercase;
+	font-family: "AvenirLT-Black", "Open Sans", sans-serif !important;;
+	background: #ebe8db;
+	font-size: 15px;
+}
+
+.wpb_content_element .wpb_tabs_nav li.ui-tabs-active a {
+	background: #faf9f7
+}
+
+.wpb_content_element .wpb_accordion_wrapper .wpb_accordion_header, .wpb_content_element.wpb_tabs .wpb_tour_tabs_wrapper .wpb_tab {
+	background: #faf9f7
+}
+
+.wpb_tab  {
+	background-color: #fff !important; 
+	> div {
+		padding: 0 24.310118262440210249671484888305%;
+	}
+}
+
+body.not-home.not-landing.single #main .singlep-content .wpb_tab  p {
+	color: #515150 !important;
+	margin-bottom: 26px !important;
+	font-size: 13px;
+	line-height: 1.05em;
+}
+
+.wpb_tab  h1, .wpb_tab  h2, .wpb_tab  h3, .wpb_tab  h4, .wpb_tab h5, .wpb_tab  h6 {
+	color: #252425 !important;
+}
+
+.wpb_content_element .wpb_tour_tabs_wrapper .wpb_tab, .wpb_content_element .wpb_accordion_wrapper .wpb_accordion_content {
+	padding: 51px 1em 1em 1em !important;;
+}
+
+@media only screen and (max-width: 767px) {
+	.wpb_tab  > div {
+		padding: 0 0 !important;
+	}
+
+	#wrapper .wpb_content_element .wpb_tour_tabs_wrapper .wpb_tabs_nav {
+		position: relative;
+		
+		 li {
+			position: relative;
+			margin-right: -150px;
+			z-index: 1;
+
+			&.ui-state-active {
+				z-index: 100;
+				&.ui-state-active {
+					
+				}
+			}
+		}
+
+		li:first-child {
+			&.ui-state-active {
+				&:after {
+					position: absolute;
+					width: 24px;
+					height: 69px;
+					content: ' ';
+					display: block !important;
+					background: image-url('lefttabshadow.png') transparent repeat-y;
+					right: -24px;
+					top: 0;
+					z-index: 1;
+				}
+			}
+		}
+
+		li + li {
+			&.ui-state-active {
+				&:before {
+					position: absolute;
+					width: 24px;
+					height: 69px;
+					content: ' ';
+					background: image-url('righttabshadow.png') transparent repeat-y;;
+					left: -24px;
+					top: 0;
+					display: block !important;
+					z-index: 1;
+				}
+
+				&:after {
+					position: absolute;
+					width: 24px;
+					height: 69px; 
+					content: ' ';
+					display: block !important;
+					background: image-url('lefttabshadow.png')  transparent repeat-y;;
+					right: -24px;
+					top: 0;
+					z-index: 1;
+				}
+			}
+		}
+
+		li:last-child {
+			&.ui-state-active {
+				&:after {
+					display: none !important;
+				}
+			}
+		}
+	}
+}
+

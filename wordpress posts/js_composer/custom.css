@@ -1,0 +1,207 @@
+.vc_responsive .wpb_row .vc_span12 {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+/** js_composer_front.css **/
+.clearfix {
+  *zoom: 1;
+}
+.clearfix:before,
+.clearfix:after {
+  display: table;
+  content: "";
+}
+.clearfix:after {
+  clear: both;
+}
+.hide-text {
+  font: 0/0 a;
+  color: transparent;
+  text-shadow: none;
+  background-color: transparent;
+  border: 0;
+}
+.input-block-level {
+  display: block;
+  width: 100%;
+  min-height: 5px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.text-left {
+  text-align: left;
+}
+.text-right {
+  text-align: right;
+}
+.text-center {
+  text-align: center;
+}
+/* Grid systems
+---------------------------------------------------------- */
+.wpb_row {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  margin-left: 0;
+  margin-right: 0;
+}
+/* Grid with fluid columns */
+.vc_row-fluid {
+  width: 100%;
+  *zoom: 1;
+}
+.vc_row-fluid:before,
+.vc_row-fluid:after {
+  display: table;
+  content: "";
+}
+.vc_row-fluid:after {
+  clear: both;
+}
+.vc_row-fluid [class*="vc_span"] {
+  display: block;
+  width: 100%;
+  min-height: 5px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  float: left;
+  margin-left: 2.5%;
+  padding: 0;
+}
+.vc_row-fluid [class*="vc_span"]:first-child {
+  margin-left: 0;
+}
+.vc_row-fluid .vc_span12,
+.wpb_teaser_grid.wpb_carousel .vc_span12 {
+  width: 100%;
+}
+.vc_row-fluid .vc_span11 {
+  width: 91.45833333333334%;
+}
+.vc_row-fluid .vc_span10 {
+  width: 82.91666666666667%;
+}
+.vc_row-fluid .vc_span9 {
+  width: 74.375%;
+}
+.vc_row-fluid .vc_span8 {
+  width: 65.83333333333334%;
+}
+.vc_row-fluid .vc_span7 {
+  width: 57.29166666666667%;
+}
+.vc_row-fluid .vc_span6,
+.wpb_teaser_grid.wpb_carousel .vc_span6 {
+  width: 48.75%;
+}
+.vc_row-fluid .vc_span5 {
+  width: 40.208333333333336%;
+}
+.vc_row-fluid .vc_span4,
+.wpb_teaser_grid.wpb_carousel .vc_span4 {
+  width: 31.666666666666668%;
+}
+.vc_row-fluid .vc_span3,
+.wpb_teaser_grid.wpb_carousel .vc_span3 {
+  width: 23.125%;
+}
+.vc_row-fluid .vc_span2 {
+  width: 14.583333333333334%;
+}
+.vc_row-fluid .vc_span1 {
+  width: 6.041666666666667%;
+}
+.wpb_row > .wpb_column > .wpb_wrapper .wpb_content_element:last-child {
+  margin-bottom: 0;
+}
+/* end Grid systems -------------------------------------- */
+/* Responsive classes
+---------------------------------------------------------- */
+.hidden {
+  display: none;
+  visibility: hidden;
+}
+.visible-phone {
+  display: none !important;
+}
+.visible-tablet {
+  display: none !important;
+}
+.hidden-desktop {
+  display: none !important;
+}
+@media (max-width: 767px) {
+  .visible-phone {
+    display: inherit !important;
+  }
+  .hidden-phone {
+    display: none !important;
+  }
+  .hidden-desktop {
+    display: inherit !important;
+  }
+  .visible-desktop {
+    display: none !important;
+  }
+}
+@media (min-width: 768px) and (max-width: 979px) {
+  .visible-tablet {
+    display: inherit !important;
+  }
+  .hidden-tablet {
+    display: none !important;
+  }
+  .hidden-desktop {
+    display: inherit !important;
+  }
+  .visible-desktop {
+    display: none !important ;
+  }
+}
+/* end Responsive classes -------------------------------- */
+/* Responsive stuff
+---------------------------------------------------------- */
+/* Make all grid-sized elements block level again */
+@media (max-width: 480px) {
+  .vc_responsive div.vc_row-fluid div[class*="vc_span"] {
+    float: none;
+    display: block;
+    width: auto;
+    margin-left: 0;
+  }
+}
+/* Content elements margins
+---------------------------------------------------------- */
+.wpb_alert p:last-child,
+#content .wpb_alert p:last-child,
+.wpb_text_column p:last-child,
+.wpb_text_column *:last-child,
+#content .wpb_text_column p:last-child,
+#content .wpb_text_column *:last-child,
+.wpb_toggle_content p:last-child {
+  margin-bottom: 0;
+}
+.wpb_row,
+.wpb_content_element,
+ul.wpb_thumbnails-fluid > li,
+.last_toggle_el_margin,
+.wpb_button {
+  margin-bottom: 35px;
+}
+.fb_like,
+.twitter-share-button,
+.entry-content .twitter-share-button,
+.wpb_googleplus,
+.wpb_pinterest,
+.wpb_tab .wpb_content_element,
+.wpb_accordion .wpb_content_element,
+.wpb_toggle_content {
+  margin-bottom: 21.739130434782606px;
+}
+/* end Content elements margins -------------------------- */

@@ -1,0 +1,144 @@
+#cgm_comments {
+	height: 90px;
+    overflow: auto;
+}
+
+.cgm-image-align-label {
+display: inline;
+font-weight: bold;
+margin: 0 1em 0 3px;
+padding: 0 0 0 23px;
+}
+
+.cgm-image-align-none-label{
+background: url("../images/align-none.png") no-repeat scroll left center transparent;
+}
+
+.cgm-image-align-left-label{
+background: url("../images/align-left.png") no-repeat scroll left center transparent;
+}
+
+.cgm-image-align-center-label{
+background: url("../images/align-center.png") no-repeat scroll left center transparent;
+}
+
+
+.cgm-image-align-right-label{
+background: url("../images/align-right.png") no-repeat scroll left center transparent;
+}
+
+#preview_gallery_cgm div {
+	background-repeat: no-repeat;
+	background-size: 100% auto;
+	height: 400px;
+	width: 330px;
+}
+
+#preview_gallery_cgm {
+	overflow:hidden;
+	width:330px;
+	height:400px
+}  
+
+
+
+
+
+
+.cgm-dialog-cont {
+	position:absolute;
+	height: 100%;
+    width: 100%;
+    z-index: 100;
+	left:0;
+	top:0;
+	display:none;
+}
+.cgm-dialog {
+	width:800px;
+	min-height:470px;
+	height:470px;
+	margin:0 auto 10px;
+	
+	position: relative;
+	display:block;
+	background: #ffffff;
+	z-index: 102;
+	color:#000000;
+	
+	text-align:left;
+	top:45px;
+	left:10px;
+	border: 1px solid #555;
+	-moz-box-shadow: rgba(0,0,0,1) 0 4px 30px;
+	-webkit-box-shadow: rgba(0,0,0,1) 0 4px 30px;
+	-khtml-box-shadow: rgba(0,0,0,1) 0 4px 30px;
+	box-shadow: rgba(0,0,0,1) 0 4px 30px;
+	
+	font: 12px "Lucida Grande",Verdana,Arial,sans-serif;
+	z-index: 9999;
+}
+.cgm-mce-input {
+	padding-bottom: 10px;
+	padding-left: 5px;
+}
+
+.cgm-mce-label{
+	font-weight: bold;
+}
+
+.cgm-mce-buttons {
+    float: left;
+    position: absolute;
+    top: 390px;
+}
+
+.cgm-dialog-head {
+	background-color: #222222;
+    color: #CFCFCF;
+	height:27px;
+	position:relative;
+}
+.cgm-dialog-head-text {
+	float:left;
+	padding:6px 10px 0;
+}
+.cgm-close-icon {
+	float: right;
+    padding: 6px 10px 0;
+    text-align: right;
+}
+.cgm-dialog-body {
+	float:left;
+    line-height: 1.4em;
+    width:300px;
+    margin: 10px 15px 15px;
+    text-align: left;
+	position:relative;
+}
+.cgm-dialog-overlay {
+   height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+   background-color: #000000;
+
+	background-color:#000;
+	-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=75)";
+	filter:alpha(opacity=75);
+	-moz-opacity: 0.75;
+	opacity: 0.75;   
+}
+
+/* CSSEditor */
+#cgm-mce-fields-cont {
+	display:none;
+}
+
+.loading-fields {
+	min-width:48px;
+	min-height:48px;
+	background: url('images/spinner_48x48.gif') no-repeat top center;
+}

@@ -30,12 +30,28 @@ get_header(); ?>
 	</div>
 	
 	<?php the_post();
-
+	
+	/*$args = array(
+		'post_type'  => 'events',
+		'meta_key'   => 'age',
+		'orderby'    => 'meta_value_num',
+		'order'      => 'ASC',
+		'meta_query' => array(
+			array(
+				'key'     => 'age',
+				'value'   => array( 3, 4 ),
+				'compare' => 'IN',
+			),
+		),
+	);
+	$query = new WP_Query( $args );*/
+	
 	//Get 'Event' posts
 	$events_posts = get_posts(array(
 		'post_type' => 'events',
 		'posts_per_page' => -1, // Unlimited posts
-		'orderby' => 'ID', // Order by ID
+		'meta_key'   => 'page_position',
+		'orderby' => 'meta_value_num', // Order by Page Position
 		'order' => 'ASC'
 	)); ?>
 	
@@ -46,7 +62,6 @@ get_header(); ?>
 			if($events_posts): 
 				foreach($events_posts as $post): 
 					setup_postdata($post);
-
 
 					//GET SLIDER ID FOR DISPLAY
 					$event_slider = null;

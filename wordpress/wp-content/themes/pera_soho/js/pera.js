@@ -53,7 +53,13 @@
 					$(this).fadeOut("slow");
 				}
 			});
-		} 
+			
+			//HIGHLIGHT PROPER FOOD MENU IF APPROPRIATE
+			$("." + page_load_hash).addClass("menu-highlight");
+		} else {
+			//DEFAULT TO DINNER IF NO MENU IS SELECTED
+			$(".page-id-1712 .dinner").addClass("menu-highlight");
+		}
 		
 		$('a[href*=#]:not([href=#])').click(function(e) {
 			if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {				
@@ -66,10 +72,18 @@
 					//SET MENU TO SEARCH FOR
 					for(var i = 0; i < menus.length; i++) {
 						if($(this).parent().hasClass(menus[i])) {
+							var change_class = menus[i];
+														
 							new_menu = menus[i];
-							
-							break;  
 					  	}
+					}
+					
+					//REMOVE ALL MENU HIGHLIGHTING
+					$("#food-navigation li").removeClass("menu-highlight");
+					
+					//ADD MENU HIGHLIGHTING FOR CLICKED MENU
+					if($(this).parent().hasClass(change_class)) {
+						$(this).parent().addClass("menu-highlight");
 					}
 					
 					//FADE IN APPROPRIATE MENU
@@ -92,6 +106,9 @@
 						closeMenu();
 					}
 					
+					var menu_offset = $(".fixed-menu").css("height");
+					console.log(menu_offset);
+					
 					$('html,body').animate({
 						scrollTop: target.offset().top - 170
 					}, 1000);
@@ -102,23 +119,22 @@
 						//console.log("Alert 2");
 					});
 					
-					/*$("#site-navigation").click(function() {
-						if(target.length) {
-							console.log("Works 99");
-		
-							e.preventDefault();
-						}
-					});*/
-					
 					return false;
 				}
 
 				e.preventDefault();
 			}
 		});
-
+		
+		// CLOSE MENU IF OPEN AND WINDOW IS LARGER THAN 767px
+		$(window).on("resize", function() {
+			if($("nav#cbp-spmenu-s2").hasClass("cbp-spmenu-open") && $(window).width() >= 768) {
+				closeMenu();
+			}
+		});
+		
 		// This will capture hash changes while you are on the same page
-		$(window).on("hashchange", function () {
+		$(window).on("hashchange", function() {
 			offsetAnchor();
 		});
 
@@ -138,15 +154,13 @@
 	
 	
 	
-	
+
 		//REUSABLE FUNCTIONS
 	
 		//FUNCTION TO CHECK THE VERTICAL SCROLL POSITION OF THE WEBSITE
 		function show_top_menu() {
 			if($("body").hasClass("home")) { //TRIGGER ON HOMEPAGE OTHERWISE ALWAYS SHOW
 				if($(document).scrollTop() > 500) { //SHOW THE FIXED MENU AFTER SCROLLING DOWN 500PX
-					//console.log("Works");
-					
 					$('#main-menu').css("opacity","1");
 					$('#logo-overlay').css("z-index","10");
 				} else {

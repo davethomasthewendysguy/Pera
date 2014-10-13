@@ -1,3 +1,7 @@
+a.open-reservation-box {
+	cursor: pointer;
+}
+
 #OT_form#OT_form {
 	width: 200px;
 }
@@ -42,6 +46,11 @@
 
 .OT_searchTimeField.OT_searchTimeField, .OT_searchDateField.OT_searchDateField, .OT_searchPartyField.OT_searchPartyField {
 	font-family: Avenir, Helvetica, Arial, Sans-Serif;
+}
+
+#OT_timeList#OT_timeList, #OT_partyList#OT_partyList {
+	width: 109px;
+	left: 60px;
 }
 
 .OT_submit.OT_submit {

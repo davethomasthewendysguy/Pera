@@ -1,0 +1,2 @@
+This program is a fork of the ZipPress plugin ZigWidgetClass which allows users to add classes per widget. The original code has since been totally overhauled to give
+it its new functionality. While the original source code is under GNU General Public License, please note that this plugin is developed originally for internal use. This plugin may, at any given point in time, be embedded directly into the Gourmet Marketing WordPress framework maintained by D. Mariano.

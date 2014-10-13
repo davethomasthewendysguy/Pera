@@ -1,0 +1,5 @@
+#rename this file to .htaccess if ajax files are failing to load.
+<Files *.php> 
+Order Allow,Deny
+allow from all 
+</Files> 

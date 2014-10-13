@@ -1,0 +1,9 @@
+.completegallery .loading {
+	background-image: url("../images/loader.gif");
+	background-repeat: no-repeat;
+	float: left;
+	height: 30px;
+	line-height: 17px;
+	margin-bottom: 20px;
+	padding-left: 25px;
+}

@@ -12,7 +12,7 @@
 				<a href="mailto:events@pera-soho.com">events@pera-soho.com</a><br/ >
 				<br/ >
 				Job Opportunities<br/ >
-				<a href="mailto:resumes@pera-soho.com">resumes@pera-soho.com</a><br/ >
+				<a href="mailto:hello@pera-soho.com">hello@pera-soho.com</a><br/ >
 				<br/ >
 				General Inquiries & Feedback<br/ >
 				<a href="mailto:hello@pera-soho.com">hello@pera-soho.com</a></p>

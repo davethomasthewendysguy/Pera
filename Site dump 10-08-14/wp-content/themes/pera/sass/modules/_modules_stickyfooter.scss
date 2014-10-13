@@ -1,0 +1,13 @@
+html, body.not-landing {
+	height: 100%;
+}
+
+#main-wrapper {
+	min-height: 100%;
+	height: auto !important;
+	height: 100%;
+	margin: 0 auto; /* the bottom margin is the negative value of the footer's height */
+}
+
+#footer, .push {
+}

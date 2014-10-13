@@ -1,0 +1,408 @@
+.swiper-slide figcaption.captions {
+position:relative;
+margin:0;
+overflow:hidden;
+display:inline-block;
+background-color: rgba(80,80,80,0.80);
+}
+
+.swiper-slide figcaption.captions img,
+.swiper-slide figcaption.captions video {
+position:relative;
+display:block;
+}
+
+.swiper-slide figcaption.captions {
+width:100%;
+position:absolute;
+overflow:hidden;
+-moz-box-sizing:border-box;
+-webkit-box-sizing:border-box;
+-ms-box-sizing:border-box;
+box-sizing:border-box;
+}
+
+
+.swiper-slide figcaption h1 {
+	color: white; 
+	font-size: 20px;
+	line-height: 20px; 
+	font-weight: normal;
+}
+
+.swiper-slide figcaption p {
+	color: rgb(187, 187, 187); 
+	font-size: 12px;
+}
+
+/*
+Appear
+---------------------------------------------------------------------------------------------------- */
+
+.swiper-slide figcaption.captions.appear  {
+visibility:hidden;
+opacity:0;
+}
+
+.swiper-slide:hover figcaption.captions.appear,
+.swiper-slide:focus figcaption.captions.appear {
+visibility:visible;
+opacity:1;
+}
+
+/*
+Left
+---------- */
+
+.swiper-slide figcaption.captions.appear.left {
+width:--SizeHover-- !important;
+left:0px !important;
+top:0 !important;
+height: 100%;
+-moz-transform:translateX(-100%);
+-webkit-transform:translateX(-100%);
+-o-transform:translateX(-100%);
+-ms-transform:translateX(-100%);
+transform:translateX(-100%);
+-moz-transition:0.4s ease-in-out;
+-webkit-transition:0.4s ease-in-out;
+-o-transition:0.4s ease-in-out;
+-ms-transition:0.4s ease-in-out;
+transition:0.4s ease-in-out;
+}
+
+
+.swiper-slide:hover figcaption.appear.left,
+.swiper-slide:focus figcaption.appear.left{
+-moz-transform:none;
+-webkit-transform:none;
+-o-transform:none;
+-ms-transform:none;
+transform:none;
+-moz-transition:0.4s ease-in-out;
+-webkit-transition:0.4s ease-in-out;
+-o-transition:0.4s ease-in-out;
+-ms-transition:0.4s ease-in-out;
+transition:0.4s ease-in-out;
+}
+
+
+/*
+Right
+---------- */
+
+.swiper-slide figcaption.appear.right {
+width:--SizeHover-- !important;
+right:0;
+height: 100%;
+top:0 !important;
+left:auto !important;
+bottom:auto !important;
+background-color: rgba(80,80,80,0.80);
+-moz-transform:translateX(100%);
+-webkit-transform:translateX(100%);
+-o-transform:translateX(100%);
+-ms-transform:translateX(100%);
+transform:translateX(100%);
+-moz-transition:0.4s ease-in-out;
+-webkit-transition:0.4s ease-in-out;
+-o-transition:0.4s ease-in-out;
+-ms-transition:0.4s ease-in-out;
+transition:0.4s ease-in-out;
+}
+
+.swiper-slide:hover figcaption.appear.right,
+.swiper-slide:focus figcaption.appear.right {
+-moz-transform:none;
+-webkit-transform:none;
+-o-transform:none;
+-ms-transform:none;
+transform:none;
+-moz-transition:0.4s ease-in-out;
+-webkit-transition:0.4s ease-in-out;
+-o-transition:0.4s ease-in-out;
+-ms-transition:0.4s ease-in-out;
+transition:0.4s ease-in-out;
+}
+
+
+/*
+Top
+---------- */
+
+.swiper-slide figcaption.appear.top {
+top:0;
+height:--SizeHover-- !important;
+-moz-transform:translateY(-100%);
+-webkit-transform:translateY(-100%);
+-o-transform:translateY(-100%);
+-ms-transform:translateY(-100%);
+transform:translateY(-100%);
+-moz-transition:0.3s ease-in-out;
+-webkit-transition:0.3s ease-in-out;
+-o-transition:0.3s ease-in-out;
+-ms-transition:0.3s ease-in-out;
+transition:0.3s ease-in-out;
+}
+
+.swiper-slide:hover  figcaption.appear.top,
+.swiper-slide:focus figcaption.appear.top {
+-moz-transform:none;
+-webkit-transform:none;
+-o-transform:none;
+-ms-transform:none;
+transform:none;
+-moz-transition:0.3s ease-in-out;
+-webkit-transition:0.3s ease-in-out;
+-o-transition:0.3s ease-in-out;
+-ms-transition:0.3s ease-in-out;
+transition:0.3s ease-in-out;
+}
+
+
+/*
+Bottom
+---------- */
+
+.swiper-slide figcaption.appear.bottom {
+bottom:0;
+height:--SizeHover-- !important;
+-moz-transform:translateY(100%);
+-webkit-transform:translateY(100%);
+-o-transform:translateY(100%);
+-ms-transform:translateY(100%);
+transform:translateY(100%);
+-moz-transition:0.3s ease-in-out;
+-webkit-transition:0.3s ease-in-out;
+-o-transition:0.3s ease-in-out;
+-ms-transition:0.3s ease-in-out;
+transition:0.3s ease-in-out;
+}
+
+.swiper-slide:hover figcaption.appear.bottom,
+.swiper-slide:focus figcaption.appear.bottom{
+-moz-transform:none;
+-webkit-transform:none;
+-o-transform:none;
+-ms-transform:none;
+transform:none;
+-moz-transition:0.3s ease-in-out;
+-webkit-transition:0.3s ease-in-out;
+-o-transition:0.3s ease-in-out;
+-ms-transition:0.3s ease-in-out;
+transition:0.3s ease-in-out;
+}
+
+
+
+/*
+Appear always
+---------------------------------------------------------------------------------------------------- */
+/*
+Left
+---------- */
+
+.swiper-slide figcaption.appear.always.left {
+width:--SizeHover-- !important;
+height:100%;
+left:0;
+top:0;
+-moz-transform:none;
+-webkit-transform:none;
+-o-transform:none;
+-ms-transform:none;
+transform:none;
+-moz-transition:none;
+-webkit-transition:none;
+-o-transition:none;
+-ms-transition:none;
+transition:none;
+visibility: visible;
+opacity:1;
+}
+
+.swiper-slide:hover figcaption.appear.always.left,
+.swiper-slide:focus figcaption.appear.always.left {
+-moz-transform:none;
+-webkit-transform:none;
+-o-transform:none;
+-ms-transform:none;
+transform:none;
+-moz-transition:none;
+-webkit-transition:none;
+-o-transition:none;
+-ms-transition:none;
+transition:none;
+visibility: visible;
+opacity:1;
+}
+
+
+/*
+Right
+---------- */
+
+.swiper-slide figcaption.appear.always.right {
+width:--SizeHover-- !important;
+height:100%;
+right:0;
+top:0;
+-moz-transform:none;
+-webkit-transform:none;
+-o-transform:none;
+-ms-transform:none;
+transform:none;
+-moz-transition:none;
+-webkit-transition:none;
+-o-transition:none;
+-ms-transition:none;
+transition:none;
+visibility: visible;
+opacity:1;
+}
+
+.swiper-slide:hover figcaption.appear.always.right,
+.swiper-slide:focus figcaption.appear.always.right {
+-moz-transform:none;
+-webkit-transform:none;
+-o-transform:none;
+-ms-transform:none;
+transform:none;
+-moz-transition:none;
+-webkit-transition:none;
+-o-transition:none;
+-ms-transition:none;
+transition:none;
+visibility: visible;
+opacity:1;
+}
+
+
+/*
+Top
+---------- */
+
+.swiper-slide figcaption.appear.always.top {
+height:--SizeHover-- !important;
+top:0;
+-moz-transform:none;
+-webkit-transform:none;
+-o-transform:none;
+-ms-transform:none;
+transform:none;
+-moz-transition:none;
+-webkit-transition:none;
+-o-transition:none;
+-ms-transition:none;
+transition:none;
+visibility: visible;
+opacity:1;
+}
+
+.swiper-slide:hover figcaption.appear.always.top,
+.swiper-slide:focus figcaption.appear.always.top {
+-moz-transform:none;
+-webkit-transform:none;
+-o-transform:none;
+-ms-transform:none;
+transform:none;
+-moz-transition:none;
+-webkit-transition:none;
+-o-transition:none;
+-ms-transition:none;
+transition:none;
+visibility: visible;
+opacity:1;
+}
+
+
+/*
+Bottom
+---------- */
+
+.swiper-slide figcaption.appear.always.bottom {
+bottom:0;
+height:--SizeHover-- !important;
+-moz-transform:none;
+-webkit-transform:none;
+-o-transform:none;
+-ms-transform:none;
+transform:none;
+-moz-transition:none;
+-webkit-transition:none;
+-o-transition:none;
+-ms-transition:none;
+transition:none;
+visibility: visible;
+opacity:1;
+}
+
+.swiper-slide:hover figcaption.appear.always.bottom,
+.swiper-slide:focus figcaption.appear.always.bottom {
+-moz-transform:none;
+-webkit-transform:none;
+-o-transform:none;
+-ms-transform:none;
+transform:none;
+-moz-transition:none;
+-webkit-transition:none;
+-o-transition:none;
+-ms-transition:none;
+transition:none;
+visibility: visible;
+opacity:1;
+}
+
+
+/*
+Appear tile description top
+---------------------------------------------------------------------------------------------------- */
+
+.swiper-slide figcaption.appear.titlebottom  {
+visibility:visible !important;
+opacity:1 !important;
+}
+
+
+/*
+/*
+Bottom
+---------- */
+
+.swiper-slide figcaption.appear.titlebottom {
+	height: --SizeHover-- !important;
+	padding-top: 0px !important;
+	bottom:--SizeTitle-- !important;
+	-moz-transform:translateY(100%);
+	-webkit-transform:translateY(100%);
+	-o-transform:translateY(100%);
+	-ms-transform:translateY(100%);
+	transform:translateY(100%);
+	-moz-transition:0.3s ease-in-out;
+	-webkit-transition:0.3s ease-in-out;
+	-o-transition:0.3s ease-in-out;
+	-ms-transition:0.3s ease-in-out;
+	transition:0.3s ease-in-out;
+}
+
+.swiper-slide figcaption.appear.titlebottom h1 {
+	padding-top: --SizeTitleLine-- !important;
+	padding-bottom: --SizeTitleLine-- !important;
+	margin: 0 !important; 
+}
+
+
+.swiper-slide:hover figcaption.appear.titlebottom,
+.swiper-slide:focus figcaption.appear.titlebottom {
+	bottom:0px !important;
+	-moz-transform:none;
+	-webkit-transform:none;
+	-o-transform:none;
+	-ms-transform:none;
+	transform:none;
+	-moz-transition:0.3s ease-in-out;
+	-webkit-transition:0.3s ease-in-out;
+	-o-transition:0.3s ease-in-out;
+	-ms-transition:0.3s ease-in-out;
+	transition:0.3s ease-in-out;
+}

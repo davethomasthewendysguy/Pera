@@ -12,13 +12,19 @@ $bloginfo = get_bloginfo("wpurl")."/wp-content/themes/pera_soho/images/";
 get_header(); ?>
 
 <div id="below-fold">
-	<section id="primary" class="content-area full-module white-background">
-		<main id="main" class="site-main full-module-inside" role="main">
+	<div id="posts-container" class="full-module white-background"><!--BRUNCH MENU-->
+		<div class="full-module-inside no-padding-bottom">
+			<h1 class="uppercase center entry-title">Pera-Logue</h1>
+		</div>
+	</div>
+
+	<div id="primary" class="content-area full-module white-background">
+		<main id="main" class="site-main full-module-blog-inside" role="main">
 
 		<?php if(have_posts()) : ?>
 
 			<header class="page-header">
-				<h1 class="page-title">
+				<h1 class="page-title uppercase">
 					<?php
 						if ( is_category() ) :
 							single_cat_title();
@@ -74,9 +80,9 @@ get_header(); ?>
 				<?php
 					// Show an optional term description.
 					$term_description = term_description();
-					if ( ! empty( $term_description ) ) :
+					/*if ( ! empty( $term_description ) ) :
 						printf( '<div class="taxonomy-description">%s</div>', $term_description );
-					endif;
+					endif;*/
 				?>
 			</header><!-- .page-header -->
 
@@ -103,6 +109,16 @@ get_header(); ?>
 
 		</main><!-- #main -->
 	</section><!-- #primary -->
+	
+	<?php include("contact.php"); ?>
+	
+	<div class="full-module white-background"><!--SEPARATOR IMAGE-->
+		<div class="separator-inside-bottom">
+			<img src="<?php echo $bloginfo ;?>separator.png" alt="Separator" />
+		</div>
+	</div>
+			</div>
+		</div>
+	</div>
 </div>
-<?php get_sidebar(); ?>
 <?php get_footer(); ?>
